@@ -21,6 +21,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomePage(),
       );
     },
+    MethodChannelHomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MethodChannelHomePage(),
+      );
+    },
     SpeechToTextRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -40,6 +46,20 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MethodChannelHomePage]
+class MethodChannelHomeRoute extends PageRouteInfo<void> {
+  const MethodChannelHomeRoute({List<PageRouteInfo>? children})
+      : super(
+          MethodChannelHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MethodChannelHomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
