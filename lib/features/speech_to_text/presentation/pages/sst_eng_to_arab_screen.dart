@@ -1,55 +1,9 @@
-import 'dart:developer';
-
+import 'package:ai_application_dct/features/speech_to_text/presentation/pod/stt_pod.dart';
 import 'package:flutter/material.dart';
-import 'package:speech_to_text/speech_recognition_result.dart';
-import 'package:speech_to_text/speech_to_text.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SSTEngToArabScreen extends StatefulWidget {
+class SSTEngToArabScreen extends StatelessWidget {
   const SSTEngToArabScreen({super.key});
-
-  @override
-  State<SSTEngToArabScreen> createState() => _SSTEngToArabScreenState();
-}
-
-class _SSTEngToArabScreenState extends State<SSTEngToArabScreen> {
-  late final SpeechToText _speechToText;
-
-  String _lastWords = "";
-  String _prevWords = "";
-
-  @override
-  void initState() {
-    super.initState();
-
-    _speechToText = SpeechToText();
-    _initSpeech();
-  }
-
-  Future<void> _initSpeech() async {
-    await _speechToText.initialize();
-  }
-
-  Future<void> _startListening() async {
-    await _speechToText.listen(
-      onResult: _onSpeechResult,
-      partialResults: false,
-      listenMode: ListenMode.dictation,
-      localeId: 'ar_QA',
-    );
-    setState(() {});
-  }
-
-  Future<void> _stopListening() async {
-    await _speechToText.stop();
-    setState(() {});
-  }
-
-  void _onSpeechResult(SpeechRecognitionResult result) {
-    setState(() {
-      _lastWords = result.recognizedWords;
-    });
-    log(_lastWords);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,42 +14,51 @@ class _SSTEngToArabScreenState extends State<SSTEngToArabScreen> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(_lastWords),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                var locales = await _speechToText.locales();
-                var localeNames = <String>[];
-                locales.forEach((element) {
-                  // log(element.name);
-                  if (element.name == 'Arabic (Qatar)') {
-                    log(element.localeId, name: 'Id Arab');
-                  } else if (element.name == 'English (India)') {
-                    log(element.localeId, name: 'Id Eng');
-                  }
-                });
-                // log(localeNames.toString());
+            Consumer(
+              builder: (context, ref, _) {
+                return Text(
+                  ref.watch(sttPodProvider),
+                );
               },
-              child: Text("get locales"),
             ),
+            SizedBox(height: 20),
+            // ElevatedButton(
+            //   onPressed: () async {
+            //     var locales = await _speechToText.locales();
+            //     var localeNames = <String>[];
+            //     locales.forEach((element) {
+            //       // log(element.name);
+            //       if (element.name == 'Arabic (Qatar)') {
+            //         log(element.localeId, name: 'Id Arab');
+            //       } else if (element.name == 'English (India)') {
+            //         log(element.localeId, name: 'Id Eng');
+            //       }
+            //     });
+            //   },
+            //   child: Text("get locales"),
+            // ),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          if (await _speechToText.hasPermission &&
-              _speechToText.isNotListening) {
-            await _startListening();
-          } else if (_speechToText.isListening) {
-            await _stopListening();
-          } else {
-            _initSpeech();
-          }
-        },
-        child: Icon(Icons.mic),
-      ),
+      floatingActionButton: Consumer(builder: (context, ref, child) {
+        return FloatingActionButton(
+            onPressed: () async {
+              if (await ref.read(sttProvider).hasPermission &&
+                  ref.read(sttProvider).isNotListening) {
+                ref.read(sttPodProvider.notifier).startListening('ar_QA');
+              } else if (ref.read(sttProvider).isListening) {
+                ref.read(sttPodProvider.notifier).stopListening();
+              } else {
+                ref.read(sttPodProvider.notifier).initializeStt();
+              }
+            },
+            child: ref.watch(sttPodProvider) == 'Listening'
+                ? Icon(Icons.stop)
+                : Icon(Icons.mic));
+      }),
     );
   }
 }
