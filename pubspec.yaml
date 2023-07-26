@@ -14,6 +14,10 @@ dependencies:
   flutter_riverpod: ^2.3.6
   riverpod_annotation: ^2.1.1
 
+
+  #Android_Speech
+  speech_to_text: ^6.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -24,6 +28,9 @@ dev_dependencies:
   riverpod_generator: ^2.2.4
   riverpod_lint: ^1.4.0
   auto_route_generator: ^7.2.0
+
+  #Method_Channel
+  pigeon: ^10.0.0
 
 flutter:
   uses-material-design: true

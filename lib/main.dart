@@ -1,8 +1,9 @@
 import 'package:ai_application_dct/core/routes/auto_router_object.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MainPage()));
 }
 
 class MainPage extends StatelessWidget {
