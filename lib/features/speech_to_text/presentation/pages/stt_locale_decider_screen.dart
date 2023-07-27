@@ -1,8 +1,5 @@
-import 'dart:developer';
+import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_screen.dart';
 
-import 'package:ai_application_dct/features/speech_to_text/presentation/pages/sst_arab_to_eng_screen.dart';
-import 'package:ai_application_dct/features/speech_to_text/presentation/pages/sst_eng_to_arab_screen.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -19,7 +16,10 @@ class STTLocaleDeciderPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => SSTEngToArabScreen(),
+                  builder: (context) => const STTScreen(
+                    appBarTitle: "English to Arabic",
+                    localeId: "ar_QA",
+                  ),
                 ),
               ),
               child: Text("English to Arabic"),
@@ -28,7 +28,10 @@ class STTLocaleDeciderPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => SSTArabToEngScreen(),
+                  builder: (context) => const STTScreen(
+                    appBarTitle: "Arabic to English",
+                    localeId: "en_IN",
+                  ),
                 ),
               ),
               child: Text("Arabic to English"),
