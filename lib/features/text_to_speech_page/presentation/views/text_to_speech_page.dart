@@ -10,8 +10,33 @@ class TextToSpeechPage extends StatefulWidget {
 }
 
 class _TextToSpeechPageState extends State<TextToSpeechPage> {
+  final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextFormField(
+            controller: _controller,
+            minLines: 4,
+            maxLines: 8,
+            decoration: const InputDecoration(
+              enabledBorder: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.purple),
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text("Speak"),
+          ),
+        ],
+      ),
+    );
   }
 }

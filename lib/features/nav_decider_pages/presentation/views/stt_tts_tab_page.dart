@@ -32,7 +32,6 @@ class _SttTtsTabPageState extends State<SttTtsTabPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text("Speech"),
         centerTitle: true,

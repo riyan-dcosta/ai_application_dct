@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
             ),
             CustomButton(
               label: 'OCR',
-              routeName: STTLocaleDeciderRoute(),
+              routeName: DocUploadRoute(),
             ),
           ],
         ),
