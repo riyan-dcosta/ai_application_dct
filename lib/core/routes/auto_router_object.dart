@@ -1,11 +1,11 @@
 import 'package:ai_application_dct/features/face_detection/presentation/pages/face_detection_page.dart';
-import 'package:ai_application_dct/features/home_page/presentation/views/home_page.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/home_page.dart';
 import 'package:ai_application_dct/features/method_channel/presentation/pages/method_channel_home.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/stt_tts_tab_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pages/doc_upload_page.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_locale_decider_screen.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_screen.dart';
+import 'package:ai_application_dct/features/text_to_speech/presentation/views/text_to_speech_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 

@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    FaceDetectionRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FaceDetectionPage(),
+      );
+    },
     MethodChannelHomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -31,6 +37,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SttTtsTabPage(),
+      );
+    },
+    DocUploadRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DocUploadPage(),
       );
     },
     STTLocaleDeciderRoute.name: (routeData) {
@@ -56,13 +68,21 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const TextToSpeechPage(),
       );
     },
-    DocUploadRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const DocUploadPage(),
-      );
-    },
   };
+}
+
+/// generated route for
+/// [FaceDetectionPage]
+class FaceDetectionRoute extends PageRouteInfo<void> {
+  const FaceDetectionRoute({List<PageRouteInfo>? children})
+      : super(
+          FaceDetectionRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FaceDetectionRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -103,6 +123,20 @@ class SttTtsTabRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SttTtsTabRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [DocUploadPage]
+class DocUploadRoute extends PageRouteInfo<void> {
+  const DocUploadRoute({List<PageRouteInfo>? children})
+      : super(
+          DocUploadRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DocUploadRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -173,20 +207,6 @@ class TextToSpeechRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'TextToSpeechRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [DocUploadPage]
-class DocUploadRoute extends PageRouteInfo<void> {
-  const DocUploadRoute({List<PageRouteInfo>? children})
-      : super(
-          DocUploadRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'DocUploadRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
