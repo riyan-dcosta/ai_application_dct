@@ -20,11 +20,12 @@ final sttProvider = AutoDisposeProvider<SpeechToText>.internal(
 );
 
 typedef SttRef = AutoDisposeProviderRef<SpeechToText>;
-String _$sttPodHash() => r'16a883a656836acbf603ac271cd7fc01ec6942bc';
+String _$sttPodHash() => r'734762deae313f3001c976b762760899fcb2dc18';
 
 /// See also [SttPod].
 @ProviderFor(SttPod)
-final sttPodProvider = AutoDisposeNotifierProvider<SttPod, String>.internal(
+final sttPodProvider =
+    AutoDisposeNotifierProvider<SttPod, SttNotifiers>.internal(
   SttPod.new,
   name: r'sttPodProvider',
   debugGetCreateSourceHash:
@@ -33,6 +34,6 @@ final sttPodProvider = AutoDisposeNotifierProvider<SttPod, String>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$SttPod = AutoDisposeNotifier<String>;
+typedef _$SttPod = AutoDisposeNotifier<SttNotifiers>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
