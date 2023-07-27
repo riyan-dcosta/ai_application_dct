@@ -18,3 +18,23 @@
 //   copyrightHeader: 'pigeons/copyright.txt',
 //   dartPackageName: 'pigeon_example_package',
 // ))
+
+import 'package:pigeon/pigeon.dart';
+enum Code { one, two }
+
+class MessageData {
+  MessageData({required this.code, required this.data});
+
+  String? name;
+  String? description;
+  Code code;
+  Map<String?, String?> data;
+}
+
+@HostApi()
+abstract class ExampleHostApi {
+  String getHostLanguage();
+
+  @async
+  bool sendMessage(MessageData messageData);
+}

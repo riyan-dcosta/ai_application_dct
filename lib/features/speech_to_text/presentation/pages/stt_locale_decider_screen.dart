@@ -1,8 +1,6 @@
-import 'dart:developer';
+import 'package:ai_application_dct/core/routes/auto_router_object.dart';
+import 'package:auto_route/auto_route.dart';
 
-import 'package:ai_application_dct/features/speech_to_text/presentation/pages/sst_arab_to_eng_screen.dart';
-import 'package:ai_application_dct/features/speech_to_text/presentation/pages/sst_eng_to_arab_screen.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -11,31 +9,30 @@ class STTLocaleDeciderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => SSTEngToArabScreen(),
-                ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            onPressed: () => context.router.push(
+              STTRoute(
+                appBarTitle: "English to Arabic",
+                localeId: "ar_QA",
               ),
-              child: Text("English to Arabic"),
             ),
-            SizedBox(height: 8),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => SSTArabToEngScreen(),
-                ),
+            child: Text("English to Arabic"),
+          ),
+          SizedBox(height: 8),
+          ElevatedButton(
+            onPressed: () => context.router.push(
+              STTRoute(
+                appBarTitle: "Arabic to English",
+                localeId: "en_IN",
               ),
-              child: Text("Arabic to English"),
             ),
-          ],
-        ),
+            child: Text("Arabic to English"),
+          ),
+        ],
       ),
     );
   }

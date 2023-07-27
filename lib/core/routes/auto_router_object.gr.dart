@@ -15,10 +15,10 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    FaceDetectionRoute.name: (routeData) {
+    MethodChannelHomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const FaceDetectionPage(),
+        child: const MethodChannelHomePage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -27,10 +27,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomePage(),
       );
     },
-    MethodChannelHomeRoute.name: (routeData) {
+    SttTtsTabRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const MethodChannelHomePage(),
+        child: const SttTtsTabPage(),
       );
     },
     STTLocaleDeciderRoute.name: (routeData) {
@@ -39,25 +39,42 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const STTLocaleDeciderPage(),
       );
     },
-    SpeechToTextRoute.name: (routeData) {
+    STTRoute.name: (routeData) {
+      final args = routeData.argsAs<STTRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SpeechToTextPage(),
+        child: STTPage(
+          appBarTitle: args.appBarTitle,
+          localeId: args.localeId,
+          key: args.key,
+        ),
+      );
+    },
+    TextToSpeechRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TextToSpeechPage(),
+      );
+    },
+    DocUploadRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DocUploadPage(),
       );
     },
   };
 }
 
 /// generated route for
-/// [FaceDetectionPage]
-class FaceDetectionRoute extends PageRouteInfo<void> {
-  const FaceDetectionRoute({List<PageRouteInfo>? children})
+/// [MethodChannelHomePage]
+class MethodChannelHomeRoute extends PageRouteInfo<void> {
+  const MethodChannelHomeRoute({List<PageRouteInfo>? children})
       : super(
-          FaceDetectionRoute.name,
+          MethodChannelHomeRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'FaceDetectionRoute';
+  static const String name = 'MethodChannelHomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -77,15 +94,15 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [MethodChannelHomePage]
-class MethodChannelHomeRoute extends PageRouteInfo<void> {
-  const MethodChannelHomeRoute({List<PageRouteInfo>? children})
+/// [SttTtsTabPage]
+class SttTtsTabRoute extends PageRouteInfo<void> {
+  const SttTtsTabRoute({List<PageRouteInfo>? children})
       : super(
-          MethodChannelHomeRoute.name,
+          SttTtsTabRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'MethodChannelHomeRoute';
+  static const String name = 'SttTtsTabRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -105,15 +122,71 @@ class STTLocaleDeciderRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SpeechToTextPage]
-class SpeechToTextRoute extends PageRouteInfo<void> {
-  const SpeechToTextRoute({List<PageRouteInfo>? children})
-      : super(
-          SpeechToTextRoute.name,
+/// [STTPage]
+class STTRoute extends PageRouteInfo<STTRouteArgs> {
+  STTRoute({
+    required String appBarTitle,
+    required String localeId,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          STTRoute.name,
+          args: STTRouteArgs(
+            appBarTitle: appBarTitle,
+            localeId: localeId,
+            key: key,
+          ),
           initialChildren: children,
         );
 
-  static const String name = 'SpeechToTextRoute';
+  static const String name = 'STTRoute';
+
+  static const PageInfo<STTRouteArgs> page = PageInfo<STTRouteArgs>(name);
+}
+
+class STTRouteArgs {
+  const STTRouteArgs({
+    required this.appBarTitle,
+    required this.localeId,
+    this.key,
+  });
+
+  final String appBarTitle;
+
+  final String localeId;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'STTRouteArgs{appBarTitle: $appBarTitle, localeId: $localeId, key: $key}';
+  }
+}
+
+/// generated route for
+/// [TextToSpeechPage]
+class TextToSpeechRoute extends PageRouteInfo<void> {
+  const TextToSpeechRoute({List<PageRouteInfo>? children})
+      : super(
+          TextToSpeechRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TextToSpeechRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [DocUploadPage]
+class DocUploadRoute extends PageRouteInfo<void> {
+  const DocUploadRoute({List<PageRouteInfo>? children})
+      : super(
+          DocUploadRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DocUploadRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
