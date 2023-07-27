@@ -15,22 +15,16 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const HomePage(),
-      );
-    },
     MethodChannelHomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const MethodChannelHomePage(),
       );
     },
-    SpeechToTextRoute.name: (routeData) {
+    HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SpeechToTextPage(),
+        child: const HomePage(),
       );
     },
     STTLocaleDeciderRoute.name: (routeData) {
@@ -39,7 +33,39 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const STTLocaleDeciderPage(),
       );
     },
+    SpeechToTextRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SpeechToTextPage(),
+      );
+    },
+    TextToSpeechRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TextToSpeechPage(),
+      );
+    },
+    SttTtsTabRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SttTtsTabPage(),
+      );
+    },
   };
+}
+
+/// generated route for
+/// [MethodChannelHomePage]
+class MethodChannelHomeRoute extends PageRouteInfo<void> {
+  const MethodChannelHomeRoute({List<PageRouteInfo>? children})
+      : super(
+          MethodChannelHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MethodChannelHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -57,15 +83,15 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [MethodChannelHomePage]
-class MethodChannelHomeRoute extends PageRouteInfo<void> {
-  const MethodChannelHomeRoute({List<PageRouteInfo>? children})
+/// [STTLocaleDeciderPage]
+class STTLocaleDeciderRoute extends PageRouteInfo<void> {
+  const STTLocaleDeciderRoute({List<PageRouteInfo>? children})
       : super(
-          MethodChannelHomeRoute.name,
+          STTLocaleDeciderRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'MethodChannelHomeRoute';
+  static const String name = 'STTLocaleDeciderRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -85,15 +111,29 @@ class SpeechToTextRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [STTLocaleDeciderPage]
-class STTLocaleDeciderRoute extends PageRouteInfo<void> {
-  const STTLocaleDeciderRoute({List<PageRouteInfo>? children})
+/// [TextToSpeechPage]
+class TextToSpeechRoute extends PageRouteInfo<void> {
+  const TextToSpeechRoute({List<PageRouteInfo>? children})
       : super(
-          STTLocaleDeciderRoute.name,
+          TextToSpeechRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'STTLocaleDeciderRoute';
+  static const String name = 'TextToSpeechRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SttTtsTabPage]
+class SttTtsTabRoute extends PageRouteInfo<void> {
+  const SttTtsTabRoute({List<PageRouteInfo>? children})
+      : super(
+          SttTtsTabRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SttTtsTabRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
