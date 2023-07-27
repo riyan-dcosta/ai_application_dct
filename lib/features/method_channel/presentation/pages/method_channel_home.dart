@@ -27,6 +27,9 @@ class MethodChannelHomePage extends ConsumerWidget {
                       .getBatteryLevelFromAndroid();
                 },
                 child: Text("Battery level : $batteryLevel")),
+            ElevatedButton(
+                onPressed: false ? playAudioFromText : null,
+                child: Text("playAudioFromText (FreeTTS JAR MethodChannel)"))
           ],
         ),
       ),
