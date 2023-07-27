@@ -13,7 +13,6 @@ dependencies:
   auto_route: ^7.7.1
   flutter_riverpod: ^2.3.6
   riverpod_annotation: ^2.1.1
-  freezed_annotation: ^2.4.1
 
 
   #Android_Speech
@@ -44,7 +43,6 @@ dev_dependencies:
   
   #Method_Channel
   pigeon: ^10.0.0
-  freezed: ^2.4.1
 
 flutter:
   uses-material-design: true
