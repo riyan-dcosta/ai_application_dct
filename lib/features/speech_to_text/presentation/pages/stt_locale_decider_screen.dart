@@ -2,10 +2,12 @@ import 'dart:developer';
 
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/sst_arab_to_eng_screen.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/sst_eng_to_arab_screen.dart';
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
-class STTLocaleDeciderScreen extends StatelessWidget {
-  const STTLocaleDeciderScreen({super.key});
+@RoutePage()
+class STTLocaleDeciderPage extends StatelessWidget {
+  const STTLocaleDeciderPage({super.key});
 
   @override
   Widget build(BuildContext context) {

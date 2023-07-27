@@ -17,14 +17,19 @@ class HomePage extends StatelessWidget {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  context.router.push(const SpeechToTextRoute());
+                  context.router.push(const STTLocaleDeciderRoute());
                 },
                 child: const Text("Speech To Text Page")),
             ElevatedButton(
                 onPressed: () {
-                  context.router.push(const SpeechToTextRoute());
+                  context.router.push(MethodChannelHomeRoute());
                 },
-                child: const Text("Speech To Text Page")),
+                child: Text('Method Channel'))
+            // ElevatedButton(
+            //     onPressed: () {
+            //       context.router.push(const SpeechToTextRoute());
+            //     },
+            //     child: const Text("Speech To Text Page")),
           ],
         ),
       ),

@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SpeechToTextPage(),
       );
     },
+    STTLocaleDeciderRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const STTLocaleDeciderPage(),
+      );
+    },
   };
 }
 
@@ -74,6 +80,20 @@ class SpeechToTextRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SpeechToTextRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [STTLocaleDeciderPage]
+class STTLocaleDeciderRoute extends PageRouteInfo<void> {
+  const STTLocaleDeciderRoute({List<PageRouteInfo>? children})
+      : super(
+          STTLocaleDeciderRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'STTLocaleDeciderRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
