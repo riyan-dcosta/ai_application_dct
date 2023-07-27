@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    FaceDetectionRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FaceDetectionPage(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -27,19 +33,33 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MethodChannelHomePage(),
       );
     },
-    SpeechToTextRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SpeechToTextPage(),
-      );
-    },
     STTLocaleDeciderRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const STTLocaleDeciderPage(),
       );
     },
+    SpeechToTextRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SpeechToTextPage(),
+      );
+    },
   };
+}
+
+/// generated route for
+/// [FaceDetectionPage]
+class FaceDetectionRoute extends PageRouteInfo<void> {
+  const FaceDetectionRoute({List<PageRouteInfo>? children})
+      : super(
+          FaceDetectionRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FaceDetectionRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -71,20 +91,6 @@ class MethodChannelHomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SpeechToTextPage]
-class SpeechToTextRoute extends PageRouteInfo<void> {
-  const SpeechToTextRoute({List<PageRouteInfo>? children})
-      : super(
-          SpeechToTextRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SpeechToTextRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [STTLocaleDeciderPage]
 class STTLocaleDeciderRoute extends PageRouteInfo<void> {
   const STTLocaleDeciderRoute({List<PageRouteInfo>? children})
@@ -94,6 +100,20 @@ class STTLocaleDeciderRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'STTLocaleDeciderRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SpeechToTextPage]
+class SpeechToTextRoute extends PageRouteInfo<void> {
+  const SpeechToTextRoute({List<PageRouteInfo>? children})
+      : super(
+          SpeechToTextRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SpeechToTextRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

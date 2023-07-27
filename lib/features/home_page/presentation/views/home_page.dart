@@ -1,4 +1,5 @@
 import 'package:ai_application_dct/core/routes/auto_router_object.dart';
+import 'package:ai_application_dct/features/face_detection/presentation/pages/face_detection_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +23,14 @@ class HomePage extends StatelessWidget {
                 child: const Text("Speech To Text Page")),
             ElevatedButton(
                 onPressed: () {
-                  context.router.push(MethodChannelHomeRoute());
+                  context.router.push(const MethodChannelHomeRoute());
                 },
-                child: Text('Method Channel'))
+                child: const Text('Method Channel')),
+            ElevatedButton(
+                onPressed: () {
+                  context.router.push(const FaceDetectionRoute());
+                },
+                child: const Text('Face Detection')),
             // ElevatedButton(
             //     onPressed: () {
             //       context.router.push(const SpeechToTextRoute());
