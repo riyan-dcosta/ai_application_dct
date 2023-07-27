@@ -1,8 +1,10 @@
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_screen.dart';
+
 import 'package:flutter/material.dart';
 
-class STTLocaleDeciderScreen extends StatelessWidget {
-  const STTLocaleDeciderScreen({super.key});
+@RoutePage()
+class STTLocaleDeciderPage extends StatelessWidget {
+  const STTLocaleDeciderPage({super.key});
 
   @override
   Widget build(BuildContext context) {
