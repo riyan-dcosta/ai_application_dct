@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:ai_application_dct/features/speech_to_text/presentation/pod/stt_notifiers.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
@@ -12,31 +15,35 @@ SpeechToText stt(SttRef ref) {
 @riverpod
 class SttPod extends _$SttPod {
   @override
-  String build() {
-    return "";
-  }
-
-  Future<void> initializeStt() async {
-    ref.read(sttProvider).initialize();
+  SttNotifiers build() {
+    return const SttNotifiers.initial();
   }
 
   Future<void> startListening(String localeId) async {
-    state = 'Listening';
-    await ref.read(sttProvider).initialize();
-    await ref.read(sttProvider).listen(
-          onResult: _onSpeechResult,
-          partialResults: false,
-          listenMode: ListenMode.dictation,
-          localeId: localeId,
-        );
+    state = const SttNotifiers.listening();
+    bool isPermitted = await ref.read(sttProvider).initialize();
+
+    if (isPermitted) {
+      await ref.read(sttProvider).listen(
+            // listenFor: Duration(seconds: 2),
+            // pauseFor: Duration(seconds: 10),
+            onResult: _onSpeechResult,
+            partialResults: false,
+            listenMode: ListenMode.dictation,
+            localeId: localeId,
+          );
+    } else {
+      state = const SttNotifiers.permissionDenied();
+      log("User didn't give permission", name: 'permission denied');
+    }
   }
 
   Future<void> stopListening() async {
-    state = '';
+    state = const SttNotifiers.stopped();
     await ref.read(sttProvider).stop();
   }
 
   void _onSpeechResult(SpeechRecognitionResult result) {
-    state = result.recognizedWords;
+    state = SttNotifiers.success(speechText: result.recognizedWords);
   }
 }
