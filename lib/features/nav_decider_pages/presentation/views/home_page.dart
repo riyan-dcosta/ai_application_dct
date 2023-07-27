@@ -27,6 +27,10 @@ class HomePage extends StatelessWidget {
               label: 'OCR',
               routeName: DocUploadRoute(),
             ),
+            CustomButton(
+              label: 'Camera Preview',
+              routeName: FaceDetectionRoute(),
+            ),
           ],
         ),
       ),
