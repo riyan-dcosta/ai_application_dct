@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
             ),
             CustomButton(
               label: 'Camera Preview',
-              routeName: FaceDetectionRoute(),
+              routeName: CameraImageStreamRoute(),
             ),
           ],
         ),

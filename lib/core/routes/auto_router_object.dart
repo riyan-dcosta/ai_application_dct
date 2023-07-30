@@ -1,3 +1,4 @@
+import 'package:ai_application_dct/features/face_detection/presentation/pages/camera_image_stream.dart';
 import 'package:ai_application_dct/features/face_detection/presentation/pages/face_detection_page.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/home_page.dart';
 import 'package:ai_application_dct/features/method_channel/presentation/pages/method_channel_home.dart';
@@ -27,6 +28,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: SttTtsTabRoute.page),
         AutoRoute(page: STTRoute.page),
         AutoRoute(page: DocUploadRoute.page),
-        AutoRoute(page: FaceDetectionRoute.page),
+        AutoRoute(page: CameraImageStreamRoute.page),
+        // AutoRoute(page: FaceDetectionRoute.page),
       ];
 }

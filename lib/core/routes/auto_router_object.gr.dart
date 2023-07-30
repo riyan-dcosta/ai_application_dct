@@ -68,6 +68,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const TextToSpeechPage(),
       );
     },
+    CameraImageStreamRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CameraImageStreamPage(),
+      );
+    },
   };
 }
 
@@ -207,6 +213,20 @@ class TextToSpeechRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'TextToSpeechRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CameraImageStreamPage]
+class CameraImageStreamRoute extends PageRouteInfo<void> {
+  const CameraImageStreamRoute({List<PageRouteInfo>? children})
+      : super(
+          CameraImageStreamRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CameraImageStreamRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
