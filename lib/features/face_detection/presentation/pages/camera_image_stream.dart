@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -227,9 +228,12 @@ class _CameraImageStreamPageState extends State<CameraImageStreamPage>
                           child: Container(
                             padding: const EdgeInsets.all(4.0),
                             alignment: Alignment.center,
-                            child: ElevatedButton(
+                            child: CustomButton(
                               onPressed: onTakePictureButtonPressed,
-                              child: const Text("Capture Image"),
+                              label:"Capture Image",
+                              margin: const EdgeInsets.all(2.0),
+                              padding: const EdgeInsets.all(2.0),
+
                             ),
                           ),
                         ),

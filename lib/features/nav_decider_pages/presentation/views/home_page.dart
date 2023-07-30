@@ -33,7 +33,9 @@ class HomePage extends StatelessWidget {
             ),
             CustomButton(
               label: 'Face Detection',
-              routeName: CameraImageStreamRoute(),
+              onPressed: () {
+                context.router.push(const CameraImageStreamRoute());
+              },
             ),
           ],
         ),
