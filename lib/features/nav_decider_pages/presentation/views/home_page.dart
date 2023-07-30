@@ -30,6 +30,12 @@ class HomePage extends StatelessWidget {
                 context.router.push(const DocUploadRoute());
               },
             ),
+            CustomButton(
+              label: 'Face Detection',
+              onPressed: () {
+                context.router.push(const CameraImageStreamRoute());
+              },
+            ),
           ],
         ),
       ),

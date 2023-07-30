@@ -13,7 +13,8 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: AutoRouterSingleton.config,
+      // routerConfig: AppRouter().config(),
+      routerConfig: AutoRouterSingleton.routeConfig,
       title: 'AI Application DCTech',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

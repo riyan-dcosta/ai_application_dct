@@ -1,6 +1,6 @@
 import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_locale_decider_screen.dart';
-import 'package:ai_application_dct/features/text_to_speech_page/presentation/views/text_to_speech_page.dart';
+import 'package:ai_application_dct/features/text_to_speech/presentation/views/text_to_speech_page.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
