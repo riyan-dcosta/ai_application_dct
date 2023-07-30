@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
               routeName: DocUploadRoute(),
             ),
             CustomButton(
-              label: 'Camera Preview',
+              label: 'Face Detection',
               routeName: CameraImageStreamRoute(),
             ),
           ],

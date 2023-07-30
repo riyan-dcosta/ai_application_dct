@@ -26,6 +26,7 @@ class _CameraImageStreamPageState extends State<CameraImageStreamPage>
   int delayTime = 5000;
   double progress = 0;
   XFile? imageFile;
+  final String pageTitle = "Face Detection";
 
   @override
   void initState() {
@@ -140,7 +141,7 @@ class _CameraImageStreamPageState extends State<CameraImageStreamPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Camera Preview")),
+      appBar: AppBar(title: Text(pageTitle)),
       body: (cameraController != null && cameraController!.value.isInitialized)
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
