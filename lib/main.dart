@@ -1,3 +1,4 @@
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:ai_application_dct/core/routes/auto_router_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,8 +17,20 @@ class MainPage extends StatelessWidget {
       title: 'AI Application DCTech',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColor.accentColor,
+        ),
         useMaterial3: true,
+        scaffoldBackgroundColor: AppColor.scaffoldBackgroundColor,
+        appBarTheme: const AppBarTheme(
+          foregroundColor: AppColor.white,
+          backgroundColor: AppColor.accentColor,
+          titleTextStyle: TextStyle(
+            color: AppColor.white,
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+          ),
+        ),
       ),
     );
   }

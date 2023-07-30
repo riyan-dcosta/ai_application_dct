@@ -1,35 +1,57 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomButton extends StatefulWidget {
   final String label;
   final PageRouteInfo routeName;
 
   const CustomButton({required this.label, required this.routeName, super.key});
 
   @override
+  State<CustomButton> createState() => _CustomButtonState();
+}
+
+class _CustomButtonState extends State<CustomButton> {
+  bool isPressed = false;
+
+  @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => context.router.push(routeName),
-      child: Container(
+    return GestureDetector(
+      onTap: () {
+        Future.delayed(Duration(milliseconds: 500), () {
+          context.router.push(widget.routeName);
+        });
+
+        setState(() {
+          isPressed = true;
+        });
+
+        Future.delayed(const Duration(milliseconds: 150), () {
+          setState(() {
+            isPressed = false;
+          });
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 100),
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         padding: EdgeInsets.all(16),
         constraints: BoxConstraints(maxWidth: 400),
         height: 68,
         decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.5),
-              blurRadius: 5,
-              offset: Offset(2, 2),
-            )
-          ],
+          color: Color(0xFF0D2231),
+          boxShadow: isPressed
+              ? []
+              : [
+                  BoxShadow(
+                    color: Color(0xFF53D46B),
+                    offset: Offset(4, 4),
+                  )
+                ],
         ),
         child: Center(
           child: Text(
-            label,
+            widget.label,
             style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 20,
