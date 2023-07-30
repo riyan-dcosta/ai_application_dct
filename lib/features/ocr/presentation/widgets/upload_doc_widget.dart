@@ -10,13 +10,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UploadDocWidget extends StatefulWidget {
   final VoidCallback onTappingNext;
-  final bool isEnabled;
   final StateProvider<bool> listenToStatusOf;
 
   const UploadDocWidget({
     super.key,
     required this.onTappingNext,
-    required this.isEnabled,
     required this.listenToStatusOf,
   });
 
@@ -75,38 +73,45 @@ class _UploadDocWidgetState extends State<UploadDocWidget> {
                         Icons.camera_alt,
                       ),
                     ),
-                    Consumer(builder: (context, ref, _) {
-                      return ElevatedButton(
-                        onPressed: () async {
-                          FilePickerResult? result =
-                              await FilePicker.platform.pickFiles(
-                            type: FileType.custom,
-                            allowedExtensions: ['pdf'],
-                          );
+                    Consumer(
+                      builder: (context, ref, _) {
+                        return ElevatedButton(
+                          onPressed: () async {
+                            FilePickerResult? result =
+                                await FilePicker.platform.pickFiles(
+                              type: FileType.custom,
+                              allowedExtensions: ['pdf'],
+                            );
 
-                          if (result != null) {
-                            ref.read(widget.listenToStatusOf.notifier).state =
-                                true;
-                            setState(() {
-                              docFile = File(result.files.single.path!);
-                            });
-                          }
-                        },
-                        child: Icon(
-                          Icons.upload,
-                        ),
-                      );
-                    }),
+                            if (result != null) {
+                              ref.read(widget.listenToStatusOf.notifier).state =
+                                  true;
+                              setState(() {
+                                docFile = File(result.files.single.path!);
+                              });
+                            }
+                          },
+                          child: Icon(
+                            Icons.upload,
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ],
             ),
           ),
         ),
-        NextOrContinueBtn(
-          label: "Next",
-          onTap: widget.isEnabled ? widget.onTappingNext : null,
-          isEnabled: widget.isEnabled,
+        Consumer(
+          builder: (context, ref, _) {
+            bool isEnabled = ref.watch(widget.listenToStatusOf);
+            return NextOrContinueBtn(
+              label: "Next",
+              onTap: isEnabled ? widget.onTappingNext : null,
+              isEnabled: isEnabled,
+            );
+          },
         ),
       ],
     );

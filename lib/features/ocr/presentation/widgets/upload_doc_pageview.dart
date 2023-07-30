@@ -3,6 +3,8 @@ import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final pageViewIndexProvider = StateProvider((ref) => 1);
+
 class UploadDocPageView extends StatefulWidget {
   const UploadDocPageView({super.key});
 
@@ -36,30 +38,29 @@ class _UploadDocPageViewState extends State<UploadDocPageView> {
         children: [
           UploadDocWidget(
             onTappingNext: () {
+              ref.read(pageViewIndexProvider.notifier).state = 2;
               _pageController.nextPage(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.ease,
               );
             },
             listenToStatusOf: passportUploadStatusProvider,
-            isEnabled: ref.watch(passportUploadStatusProvider),
           ),
           UploadDocWidget(
             onTappingNext: () {
+              ref.read(pageViewIndexProvider.notifier).state = 3;
               _pageController.nextPage(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.ease,
               );
             },
             listenToStatusOf: idCardUploadStatusProvider,
-            isEnabled: ref.watch(idCardUploadStatusProvider),
           ),
           UploadDocWidget(
             onTappingNext: () {
               //Next Step
             },
             listenToStatusOf: pdfUploadStatusProvider,
-            isEnabled: ref.watch(pdfUploadStatusProvider),
           ),
         ],
       );
