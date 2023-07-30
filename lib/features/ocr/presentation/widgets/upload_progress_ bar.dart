@@ -5,12 +5,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class UploadProgressBar extends StatelessWidget {
   final String stepName;
   final int stepNum;
+  final bool isCurrent;
   final StateProvider<bool> listenTo;
 
   const UploadProgressBar({
     super.key,
     required this.stepName,
     required this.stepNum,
+    required this.isCurrent,
     required this.listenTo,
   });
 
@@ -22,17 +24,20 @@ class UploadProgressBar extends StatelessWidget {
           bool isDone = ref.watch(listenTo);
           return CircleAvatar(
             radius: 10,
-            backgroundColor:
-                isDone ? AppColor.emeraldGreen : AppColor.accentColor,
+            backgroundColor: isDone
+                ? AppColor.emeraldGreen
+                : isCurrent
+                    ? AppColor.accentColor
+                    : AppColor.submarineBlue,
             child: isDone
-                ? Icon(
+                ? const Icon(
                     Icons.check,
                     size: 14,
                     color: AppColor.accentColor,
                   )
                 : Text(
                     "$stepNum",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: AppColor.white,
                       fontSize: 12,
                     ),
@@ -45,6 +50,7 @@ class UploadProgressBar extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 16,
+            color: isCurrent ? AppColor.accentColor : AppColor.submarineBlue,
           ),
         ),
       ],

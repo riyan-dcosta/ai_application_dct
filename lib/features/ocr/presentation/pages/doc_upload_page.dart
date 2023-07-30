@@ -17,7 +17,8 @@ class DocUploadPage extends ConsumerWidget {
         ref
           ..read(passportUploadStatusProvider.notifier).state = false
           ..read(idCardUploadStatusProvider.notifier).state = false
-          ..read(pdfUploadStatusProvider.notifier).state = false;
+          ..read(pdfUploadStatusProvider.notifier).state = false
+          ..read(pageViewIndexProvider.notifier).state = 1;
         return true;
       },
       child: Scaffold(
@@ -43,16 +44,19 @@ class DocUploadPage extends ConsumerWidget {
                     UploadProgressBar(
                       stepName: 'Passport',
                       stepNum: 1,
+                      isCurrent: 1 <= ref.watch(pageViewIndexProvider),
                       listenTo: passportUploadStatusProvider,
                     ),
                     UploadProgressBar(
                       stepName: 'Id Card',
                       stepNum: 2,
+                      isCurrent: 2 <= ref.watch(pageViewIndexProvider),
                       listenTo: idCardUploadStatusProvider,
                     ),
                     UploadProgressBar(
                       stepName: 'Pdf',
                       stepNum: 3,
+                      isCurrent: 3 <= ref.watch(pageViewIndexProvider),
                       listenTo: pdfUploadStatusProvider,
                     ),
                   ],
