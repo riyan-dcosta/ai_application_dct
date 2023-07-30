@@ -1,3 +1,4 @@
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,17 +22,18 @@ class UploadProgressBar extends StatelessWidget {
           bool isDone = ref.watch(listenTo);
           return CircleAvatar(
             radius: 10,
-            backgroundColor: isDone ? Colors.green : Colors.black,
+            backgroundColor:
+                isDone ? AppColor.emeraldGreen : AppColor.accentColor,
             child: isDone
                 ? Icon(
                     Icons.check,
                     size: 14,
-                    color: Colors.white,
+                    color: AppColor.accentColor,
                   )
                 : Text(
                     "$stepNum",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColor.white,
                       fontSize: 12,
                     ),
                   ),

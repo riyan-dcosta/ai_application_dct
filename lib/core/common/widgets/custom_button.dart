@@ -1,11 +1,22 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
   final String label;
-  final PageRouteInfo routeName;
+  final EdgeInsets? padding;
+  final EdgeInsets? margin;
+  final double? height;
+  final double? width;
+  final VoidCallback onPressed;
 
-  const CustomButton({required this.label, required this.routeName, super.key});
+  const CustomButton({
+    required this.label,
+    required this.onPressed,
+    this.padding,
+    this.margin,
+    this.height,
+    this.width,
+    super.key,
+  });
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
@@ -19,7 +30,7 @@ class _CustomButtonState extends State<CustomButton> {
     return GestureDetector(
       onTap: () {
         Future.delayed(Duration(milliseconds: 500), () {
-          context.router.push(widget.routeName);
+          widget.onPressed();
         });
 
         setState(() {
@@ -34,10 +45,12 @@ class _CustomButtonState extends State<CustomButton> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        padding: EdgeInsets.all(16),
+        margin:
+            widget.margin ?? EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        padding: widget.padding ?? EdgeInsets.all(16),
         constraints: BoxConstraints(maxWidth: 400),
-        height: 68,
+        width: widget.width,
+        height: widget.height ?? 68,
         decoration: BoxDecoration(
           color: Color(0xFF0D2231),
           boxShadow: isPressed

@@ -1,3 +1,4 @@
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class NextOrContinueBtn extends StatelessWidget {
@@ -21,7 +22,7 @@ class NextOrContinueBtn extends StatelessWidget {
         constraints: BoxConstraints(maxWidth: 400),
         height: 68,
         decoration: BoxDecoration(
-          color: isEnabled ? Colors.indigo : Colors.grey.shade400,
+          color: isEnabled ? AppColor.accentColor : AppColor.submarineBlue,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
@@ -30,7 +31,7 @@ class NextOrContinueBtn extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 24,
-              color: isEnabled ? Colors.white : Colors.blueGrey,
+              color: isEnabled ? AppColor.white : AppColor.grey,
             ),
           ),
         ),
