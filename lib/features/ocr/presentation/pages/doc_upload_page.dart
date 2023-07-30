@@ -1,5 +1,5 @@
 import 'package:ai_application_dct/features/ocr/presentation/pod/doc_upload_pod.dart';
-import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_page_view.dart';
+import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_pageview.dart';
 import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_progress_ bar.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';

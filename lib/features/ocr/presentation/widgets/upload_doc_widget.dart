@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:ai_application_dct/features/ocr/presentation/widgets/next_or_continue_btn.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
@@ -50,10 +51,10 @@ class _UploadDocWidgetState extends State<UploadDocWidget> {
                       color: Colors.white,
                     ),
                     child: docFile == null
-                        ? Icon(
+                        ? const Icon(
                             Icons.file_copy_outlined,
                             size: 44,
-                            color: Colors.orangeAccent,
+                            color: AppColor.grey,
                           )
                         : ClipRRect(
                             borderRadius: BorderRadius.circular(10),

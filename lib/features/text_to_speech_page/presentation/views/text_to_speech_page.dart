@@ -1,3 +1,5 @@
+import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -23,17 +25,36 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
             controller: _controller,
             minLines: 4,
             maxLines: 8,
+            cursorColor: AppColor.emeraldGreen,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColor.grey,
+            ),
             decoration: const InputDecoration(
-              enabledBorder: OutlineInputBorder(),
+              filled: true,
+              fillColor: AppColor.white,
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: AppColor.submarineBlue,
+                  width: 2,
+                ),
+              ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.purple),
+                borderSide: BorderSide(
+                  color: AppColor.accentColor,
+                  width: 2,
+                ),
               ),
             ),
           ),
           SizedBox(height: 20),
-          ElevatedButton(
+          CustomButton(
+            label: "Speak",
+            height: 44,
+            padding: EdgeInsets.all(4),
+            margin: EdgeInsets.symmetric(vertical: 4),
             onPressed: () {},
-            child: Text("Speak"),
           ),
         ],
       ),

@@ -1,5 +1,5 @@
 import 'package:ai_application_dct/core/routes/auto_router_object.dart';
-import 'package:ai_application_dct/features/nav_decider_pages/presentation/widgets/custom_button.dart';
+import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -15,17 +15,21 @@ class HomePage extends StatelessWidget {
         title: const Text('AI Application'),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomButton(
               label: 'Speech',
-              routeName: SttTtsTabRoute(),
+              onPressed: () {
+                context.router.push(const SttTtsTabRoute());
+              },
             ),
             CustomButton(
               label: 'OCR',
-              routeName: DocUploadRoute(),
+              onPressed: () {
+                context.router.push(const DocUploadRoute());
+              },
             ),
           ],
         ),
