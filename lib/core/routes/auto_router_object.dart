@@ -4,6 +4,7 @@ import 'package:ai_application_dct/features/nav_decider_pages/presentation/views
 import 'package:ai_application_dct/features/method_channel/presentation/pages/method_channel_home.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/stt_tts_tab_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pages/doc_upload_page.dart';
+import 'package:ai_application_dct/features/settings/presentation/pages/settings_page.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_locale_decider_screen.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_screen.dart';
 import 'package:ai_application_dct/features/text_to_speech/presentation/views/text_to_speech_page.dart';
@@ -30,5 +31,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: DocUploadRoute.page),
         AutoRoute(page: CameraImageStreamRoute.page),
         // AutoRoute(page: FaceDetectionRoute.page),
+        AutoRoute(page: SettingsRoute.page),
       ];
 }

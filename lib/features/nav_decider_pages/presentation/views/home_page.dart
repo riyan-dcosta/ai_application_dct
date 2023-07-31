@@ -12,27 +12,35 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.helloWorld),
+        title: Text(AppLocalizations.of(context)!.aiApplication),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => context.router.push(const SettingsRoute()),
+            icon: Icon(
+              Icons.settings_outlined,
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomButton(
-              label: 'Speech',
+              label: AppLocalizations.of(context)!.speech,
               onPressed: () {
                 context.router.push(const SttTtsTabRoute());
               },
             ),
             CustomButton(
-              label: 'OCR',
+              label: AppLocalizations.of(context)!.ocr,
               onPressed: () {
                 context.router.push(const DocUploadRoute());
               },
             ),
             CustomButton(
-              label: 'Face Detection',
+              label: AppLocalizations.of(context)!.faceDetection,
               onPressed: () {
                 context.router.push(const CameraImageStreamRoute());
               },

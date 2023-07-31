@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    CameraImageStreamRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CameraImageStreamPage(),
+      );
+    },
     FaceDetectionRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -68,13 +74,27 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const TextToSpeechPage(),
       );
     },
-    CameraImageStreamRoute.name: (routeData) {
+    SettingsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CameraImageStreamPage(),
+        child: const SettingsPage(),
       );
     },
   };
+}
+
+/// generated route for
+/// [CameraImageStreamPage]
+class CameraImageStreamRoute extends PageRouteInfo<void> {
+  const CameraImageStreamRoute({List<PageRouteInfo>? children})
+      : super(
+          CameraImageStreamRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CameraImageStreamRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -218,15 +238,15 @@ class TextToSpeechRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CameraImageStreamPage]
-class CameraImageStreamRoute extends PageRouteInfo<void> {
-  const CameraImageStreamRoute({List<PageRouteInfo>? children})
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute({List<PageRouteInfo>? children})
       : super(
-          CameraImageStreamRoute.name,
+          SettingsRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'CameraImageStreamRoute';
+  static const String name = 'SettingsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

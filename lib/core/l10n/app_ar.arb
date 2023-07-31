@@ -1,4 +1,10 @@
 {
-    "helloWorld": "مرحبا بالعالم!",
-    "hello": "مرحبا {userName}"
+    "aiApplication": "AI Application",
+    "speech": "لغة الكلام",
+    "ocr": "OCR",
+    "faceDetection": "الكشف عن الوجه",
+    "settings": "إعدادات",
+    "language": "لغة",
+    "english": "إنجليزي",
+    "arabic": "عربي"
 }
