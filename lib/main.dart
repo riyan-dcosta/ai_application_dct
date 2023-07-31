@@ -1,3 +1,4 @@
+import 'package:ai_application_dct/core/config/routes/go_router_object.dart';
 import 'package:ai_application_dct/core/config/routes/router_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,7 +18,8 @@ class MainPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-      routerConfig: RouterObject.routeConfig,
+      // routerConfig: RouterObject.routeConfig,
+      routerConfig: router,
       title: StaticStrings.applicationTitle,
       debugShowCheckedModeBanner: false,
       theme: ref.watch(appThemeProvider),

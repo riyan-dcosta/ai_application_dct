@@ -73,10 +73,10 @@ class AppTheme2 {
       useMaterial3: true,
       scaffoldBackgroundColor: AppColor.white,
       appBarTheme: const AppBarTheme(
-        foregroundColor: AppColor.black,
-        backgroundColor: AppColor.mercury,
+        foregroundColor: AppColor.mercury,
+        backgroundColor: AppColor.accentColor,
         titleTextStyle: TextStyle(
-          color: AppColor.black,
+          color: AppColor.mercury,
           fontWeight: FontWeight.w700,
           fontSize: 20,
         ),
