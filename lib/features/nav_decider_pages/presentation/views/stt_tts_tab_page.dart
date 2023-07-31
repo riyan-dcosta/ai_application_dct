@@ -3,6 +3,7 @@ import 'package:ai_application_dct/features/speech_to_text/presentation/pages/st
 import 'package:ai_application_dct/features/text_to_speech/presentation/views/text_to_speech_page.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class SttTtsTabPage extends StatefulWidget {
@@ -34,19 +35,19 @@ class _SttTtsTabPageState extends State<SttTtsTabPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Speech"),
+        title: Text(AppLocalizations.of(context)!.speech),
         centerTitle: true,
         bottom: TabBar(
           controller: _tabController,
           labelColor: AppColor.white,
           unselectedLabelColor: AppColor.submarineBlue,
           indicatorColor: AppColor.emeraldGreen,
-          tabs: const [
+          tabs: [
             Tab(
-              child: Text('Speech to Text'),
+              child: Text(AppLocalizations.of(context)!.speechToText),
             ),
             Tab(
-              child: Text('Text to Speech'),
+              child: Text(AppLocalizations.of(context)!.textToSpeech),
             )
           ],
         ),

@@ -6,5 +6,15 @@
     "settings": "إعدادات",
     "language": "لغة",
     "english": "إنجليزي",
-    "arabic": "عربي"
+    "arabic": "عربي",
+    "passport": "جواز سفر",
+    "idCard": "بطاقة التعريف",
+    "pdf": "بي دي إف",
+    "next": "التالي",
+    "uploadDocuments": "تحميل المستندات",
+    "englishToArabic": "من الإنجليزية إلى العربية",
+    "arabicToEnglish": "من العربية إلى الإنجليزية",
+    "speak": "يتكلم",
+    "speechToText": "خطاب إلى نص",
+    "textToSpeech": "النص إلى الكلام"
 }

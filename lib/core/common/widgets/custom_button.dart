@@ -54,6 +54,7 @@ class _CustomButtonState extends State<CustomButton> {
         constraints: BoxConstraints(maxWidth: 400),
         width: widget.width,
         height: widget.height ?? 68,
+        transform: isPressed ? Matrix4.translationValues(2, 2, 0) : null,
         decoration: BoxDecoration(
           color: widget.isEnabled ? AppColor.accentColor : AppColor.grey,
           boxShadow: isPressed

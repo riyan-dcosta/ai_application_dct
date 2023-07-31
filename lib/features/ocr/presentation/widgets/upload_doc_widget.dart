@@ -7,6 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UploadDocWidget extends StatefulWidget {
   final VoidCallback onTappingNext;
@@ -106,7 +107,7 @@ class _UploadDocWidgetState extends State<UploadDocWidget> {
         Consumer(builder: (context, ref, _) {
           bool isEnabled = ref.watch(widget.listenToStatusOf);
           return CustomButton(
-            label: "Next",
+            label: AppLocalizations.of(context)!.next,
             margin: EdgeInsets.only(bottom: 4, right: 4),
             onPressed: isEnabled ? widget.onTappingNext : () {},
             isEnabled: isEnabled,

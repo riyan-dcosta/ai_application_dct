@@ -1,8 +1,8 @@
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
 import 'package:ai_application_dct/core/routes/auto_router_object.dart';
 import 'package:auto_route/auto_route.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class STTLocaleDeciderPage extends StatelessWidget {
@@ -15,27 +15,27 @@ class STTLocaleDeciderPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomButton(
-            label: "English to Arabic",
+            label: AppLocalizations.of(context)!.englishToArabic,
             height: 44,
             padding: EdgeInsets.all(4),
             margin: EdgeInsets.symmetric(vertical: 4),
             width: 200,
             onPressed: () => context.router.push(
               STTRoute(
-                appBarTitle: "English to Arabic",
+                appBarTitle: AppLocalizations.of(context)!.englishToArabic,
                 localeId: "ar_QA",
               ),
             ),
           ),
           SizedBox(height: 8),
           CustomButton(
-            label: "Arabic to English",
+            label: AppLocalizations.of(context)!.arabicToEnglish,
             height: 44,
             padding: EdgeInsets.all(4),
             width: 200,
             onPressed: () => context.router.push(
               STTRoute(
-                appBarTitle: "Arabic to English",
+                appBarTitle: AppLocalizations.of(context)!.arabicToEnglish,
                 localeId: "en_IN",
               ),
             ),
