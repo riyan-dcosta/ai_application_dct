@@ -2,6 +2,7 @@ import 'package:ai_application_dct/core/routes/auto_router_object.dart';
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AI Application'),
+        title: Text(AppLocalizations.of(context)!.helloWorld),
         centerTitle: true,
       ),
       body: Center(
