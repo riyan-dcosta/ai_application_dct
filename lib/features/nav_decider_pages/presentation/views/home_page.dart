@@ -1,9 +1,7 @@
-import 'package:ai_application_dct/core/routes/auto_router_object.dart';
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-@RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -21,19 +19,20 @@ class HomePage extends StatelessWidget {
             CustomButton(
               label: 'Speech',
               onPressed: () {
-                context.router.push(const SttTtsTabRoute());
+                // context.router.push(const SttTtsTabRoute());
+                context.go('/speech');
               },
             ),
             CustomButton(
               label: 'OCR',
               onPressed: () {
-                context.router.push(const DocUploadRoute());
+                context.go('/doc_upload');
               },
             ),
             CustomButton(
               label: 'Face Detection',
               onPressed: () {
-                context.router.push(const CameraImageStreamRoute());
+                context.go('/face_detection');
               },
             ),
           ],

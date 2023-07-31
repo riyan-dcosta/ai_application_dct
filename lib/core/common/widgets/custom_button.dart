@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../../config/theme.dart';
+
 class CustomButton extends StatefulWidget {
   final String label;
-  final EdgeInsets? padding;
-  final EdgeInsets? margin;
-  final double? height;
+  final EdgeInsets padding;
+  final EdgeInsets margin;
+  final double height;
   final double? width;
   final VoidCallback onPressed;
 
   const CustomButton({
     required this.label,
     required this.onPressed,
-    this.padding,
-    this.margin,
-    this.height,
+    this.padding = const EdgeInsets.all(16),
+    this.margin = const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    this.height = 68,
     this.width,
     super.key,
   });
@@ -25,11 +27,77 @@ class CustomButton extends StatefulWidget {
 class _CustomButtonState extends State<CustomButton> {
   bool isPressed = false;
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Container(
+  //     margin: widget.margin,
+  //     // padding: widget.padding ?? EdgeInsets.all(16),
+  //     // constraints: BoxConstraints(maxWidth: 400),
+  //     // width: widget.width,
+  //     // height: widget.height ?? 68,
+  //     // decoration: BoxDecoration(
+  //     //   boxShadow: isPressed
+  //     //       ? []
+  //     //       : [
+  //     //           BoxShadow(
+  //     //             color: Color(0xFF53D46B),
+  //     //             offset: Offset(4, 4),
+  //     //           )
+  //     //         ],
+  //     // ),
+  //     child: ElevatedButton(
+  //       style: ButtonStyle(
+  //           padding: MaterialStatePropertyAll(widget.padding),
+  //           backgroundColor: const MaterialStatePropertyAll(AppColor.bigStone),
+  //           elevation: const MaterialStatePropertyAll(4),
+  //           // shadowColor: MaterialStatePropertyAll(AppColor.emeraldGreen),
+  //           shape: MaterialStatePropertyAll(
+  //             LinearBorder(
+  //               side: BorderSide(color: AppColor.emeraldGreen, width: 4),
+  //               end: LinearBorderEdge(size: 0.9, alignment: 1),
+  //               bottom: LinearBorderEdge(size: 0.9, alignment: 1)
+  //             ),
+  //           )),
+  //       onPressed: () {
+  //         Future.delayed(const Duration(milliseconds: 500), () {
+  //           widget.onPressed();
+  //         });
+  //
+  //         setState(() {
+  //           isPressed = true;
+  //         });
+  //
+  //         Future.delayed(const Duration(milliseconds: 150), () {
+  //           setState(() {
+  //             isPressed = false;
+  //           });
+  //         });
+  //       },
+  //       child: Center(
+  //         child: Text(
+  //           widget.label,
+  //           style: TextStyle(
+  //             fontWeight: FontWeight.w700,
+  //             fontSize: 20,
+  //             color: Colors.white,
+  //             shadows: [
+  //               Shadow(
+  //                 color: Colors.black.withOpacity(0.4),
+  //                 offset: const Offset(2, 1),
+  //                 blurRadius: 2,
+  //               )
+  //             ],
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Future.delayed(Duration(milliseconds: 500), () {
+        Future.delayed(const Duration(milliseconds: 500), () {
           widget.onPressed();
         });
 
@@ -45,18 +113,18 @@ class _CustomButtonState extends State<CustomButton> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
-        margin:
-            widget.margin ?? EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        padding: widget.padding ?? EdgeInsets.all(16),
-        constraints: BoxConstraints(maxWidth: 400),
+        margin: widget.margin,
+        padding: widget.padding,
+        constraints: const BoxConstraints(maxWidth: 400),
         width: widget.width,
-        height: widget.height ?? 68,
+        height: widget.height,
+        transform: isPressed ? Matrix4.translationValues(2, 2, 0) : null,
         decoration: BoxDecoration(
-          color: Color(0xFF0D2231),
+          color: AppColor.accentColor,
           boxShadow: isPressed
               ? []
               : [
-                  BoxShadow(
+                  const BoxShadow(
                     color: Color(0xFF53D46B),
                     offset: Offset(4, 4),
                   )
@@ -72,7 +140,7 @@ class _CustomButtonState extends State<CustomButton> {
                 shadows: [
                   Shadow(
                     color: Colors.black.withOpacity(0.4),
-                    offset: Offset(2, 1),
+                    offset: const Offset(2, 1),
                     blurRadius: 2,
                   )
                 ]),
