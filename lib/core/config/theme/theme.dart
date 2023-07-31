@@ -13,11 +13,10 @@ class AppTheme extends _$AppTheme {
   final _darkTheme = ThemeData(
     brightness: Brightness.dark,
     primarySwatch: Colors.green,
+    useMaterial3: true,
+
   );
-  final _lightTheme = ThemeData(
-    brightness: Brightness.light,
-    primarySwatch: Colors.purple,
-  );
+  final _lightTheme = AppTheme2.lightTheme;
 
   void setDarkTheme() {
     state = _darkTheme;
@@ -43,6 +42,13 @@ class AppTheme extends _$AppTheme {
     }
   }
 }
+
+@riverpod
+bool isDarkThemeSet(IsDarkThemeSetRef ref) {
+  final darkTheme = ref.read(appThemeProvider.notifier).getDarkTheme();
+  return darkTheme == ref.watch(appThemeProvider);
+}
+
 class AppColor {
   AppColor._();
 
@@ -63,26 +69,23 @@ class AppTheme2 {
   AppTheme2._();
 
   static ThemeData lightTheme = ThemeData(
-    primaryColor: AppColor.mercury,
-    useMaterial3: true,
-    scaffoldBackgroundColor: AppColor.scaffoldBackgroundColor,
-    appBarTheme: const AppBarTheme(
-      foregroundColor: AppColor.white,
-      backgroundColor: AppColor.accentColor,
-      titleTextStyle: TextStyle(
-        color: AppColor.white,
-        fontWeight: FontWeight.w700,
-        fontSize: 20,
+      primaryColor: AppColor.mercury,
+      useMaterial3: true,
+      scaffoldBackgroundColor: AppColor.white,
+      appBarTheme: const AppBarTheme(
+        foregroundColor: AppColor.black,
+        backgroundColor: AppColor.mercury,
+        titleTextStyle: TextStyle(
+          color: AppColor.black,
+          fontWeight: FontWeight.w700,
+          fontSize: 20,
+        ),
       ),
-    ),
-    elevatedButtonTheme: const ElevatedButtonThemeData(
-      style: ButtonStyle(
+      elevatedButtonTheme: const ElevatedButtonThemeData(
+          style: ButtonStyle(
         backgroundColor: MaterialStatePropertyAll(AppColor.bigStone),
         elevation: MaterialStatePropertyAll(4),
         shadowColor: MaterialStatePropertyAll(AppColor.emeraldGreen),
-        
-      )
-    ) 
-  );
+      )));
   static ThemeData darkTheme = ThemeData();
 }

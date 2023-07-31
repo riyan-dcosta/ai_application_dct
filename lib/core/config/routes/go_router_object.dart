@@ -2,6 +2,7 @@ import 'package:ai_application_dct/features/face_detection/presentation/pages/ca
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/home_page.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/stt_tts_tab_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pages/doc_upload_page.dart';
+import 'package:ai_application_dct/features/settings/presentation/pages/settings_page.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,6 +16,9 @@ class GoRouterObject {
         path: '/',
         builder: (context, state) => const HomePage(),
         routes: [
+          GoRoute(
+              path: 'settings',
+              builder: (context, state) => const SettingsPage()),
           GoRoute(
               path: 'doc_upload',
               builder: (context, state) => const DocUploadPage()),

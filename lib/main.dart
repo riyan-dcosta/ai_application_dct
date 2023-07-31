@@ -2,10 +2,12 @@ import 'package:ai_application_dct/core/config/routes/router_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'core/config/theme.dart';
+import 'core/config/theme/theme.dart';
 import 'core/constants/strings.dart';
+// import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 void main() {
+  // setUrlStrategy(PathUrlStrategy());
   runApp(const ProviderScope(child: MainPage()));
 }
 

@@ -6,7 +6,22 @@ part of 'theme.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appThemeHash() => r'8d4183a3357680a615c5dd051275c5f0de156988';
+String _$isDarkThemeSetHash() => r'bebf39babdffefc3bda53433f43393592fbf67aa';
+
+/// See also [isDarkThemeSet].
+@ProviderFor(isDarkThemeSet)
+final isDarkThemeSetProvider = AutoDisposeProvider<bool>.internal(
+  isDarkThemeSet,
+  name: r'isDarkThemeSetProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$isDarkThemeSetHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef IsDarkThemeSetRef = AutoDisposeProviderRef<bool>;
+String _$appThemeHash() => r'8e6771aabb4481d00f8ab25226a28937b70b215f';
 
 /// See also [AppTheme].
 @ProviderFor(AppTheme)

@@ -11,6 +11,13 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('AI Application'),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.go("/settings");
+              },
+              icon: const Icon(Icons.settings))
+        ],
       ),
       body: Center(
         child: Column(
