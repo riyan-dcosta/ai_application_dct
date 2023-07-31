@@ -44,19 +44,16 @@ class DocUploadPage extends ConsumerWidget {
                     UploadProgressBar(
                       stepName: 'Passport',
                       stepNum: 1,
-                      isCurrent: 1 <= ref.watch(pageViewIndexProvider),
                       listenTo: passportUploadStatusProvider,
                     ),
                     UploadProgressBar(
                       stepName: 'Id Card',
                       stepNum: 2,
-                      isCurrent: 2 <= ref.watch(pageViewIndexProvider),
                       listenTo: idCardUploadStatusProvider,
                     ),
                     UploadProgressBar(
                       stepName: 'Pdf',
                       stepNum: 3,
-                      isCurrent: 3 <= ref.watch(pageViewIndexProvider),
                       listenTo: pdfUploadStatusProvider,
                     ),
                   ],
