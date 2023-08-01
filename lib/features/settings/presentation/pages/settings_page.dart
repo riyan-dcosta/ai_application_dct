@@ -36,7 +36,7 @@ class SettingsPage extends ConsumerWidget {
               contentPadding: EdgeInsets.zero,
               leading: Radio(
                 value: 'en',
-                groupValue: ref.watch(l10nPodProvider).languageCode,
+                groupValue: ref.watch(l10nPodProvider).value!.languageCode,
                 onChanged: (localeId) {
                   ref.read(l10nPodProvider.notifier).toggleLocale(localeId!);
                 },
@@ -47,7 +47,7 @@ class SettingsPage extends ConsumerWidget {
               contentPadding: EdgeInsets.zero,
               leading: Radio(
                 value: 'ar',
-                groupValue: ref.watch(l10nPodProvider).languageCode,
+                groupValue: ref.watch(l10nPodProvider).value!.languageCode,
                 onChanged: (localeId) {
                   ref.read(l10nPodProvider.notifier).toggleLocale(localeId!);
                 },
