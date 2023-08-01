@@ -29,6 +29,10 @@ RouteBase get $homeRoute => GoRouteData.$route(
           ],
         ),
         GoRouteData.$route(
+          path: 'upload_documents',
+          factory: $DocUploadRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
           path: 'face_detection',
           factory: $FaceDetectionRouteExtension._fromState,
         ),
@@ -98,6 +102,24 @@ extension $SpeechToTextRouteExtension on SpeechToTextRoute {
           'app-title': appTitle,
           'locale-i-d': localeID,
         },
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $DocUploadRouteExtension on DocUploadRoute {
+  static DocUploadRoute _fromState(GoRouterState state) =>
+      const DocUploadRoute();
+
+  String get location => GoRouteData.$location(
+        '/upload_documents',
       );
 
   void go(BuildContext context) => context.go(location);

@@ -15,7 +15,6 @@ class HomePage extends StatelessWidget {
           IconButton(
               onPressed: () {
                 const SettingsRoute().go(context);
-                // context.go("/settings");
               },
               icon: const Icon(Icons.settings))
         ],
@@ -28,20 +27,19 @@ class HomePage extends StatelessWidget {
               label: 'Speech',
               onPressed: () {
                 const SpeechRoute().go(context);
-                // context.router.push(const SttTtsTabRoute());
-                // context.go('/speech');
               },
             ),
             CustomButton(
               label: 'OCR',
               onPressed: () {
+                const DocUploadRoute().go(context);
                 // context.go('/doc_upload');
               },
             ),
             CustomButton(
               label: 'Face Detection',
               onPressed: () {
-                // context.go('/face_detection');
+                const FaceDetectionRoute().go(context);
               },
             ),
           ],

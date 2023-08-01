@@ -5,7 +5,6 @@ import 'package:ai_application_dct/features/nav_decider_pages/presentation/views
 import 'package:ai_application_dct/features/ocr/presentation/pages/doc_upload_page.dart';
 import 'package:ai_application_dct/features/settings/presentation/pages/settings_page.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_screen.dart';
-import 'package:ai_application_dct/features/text_to_speech/presentation/views/text_to_speech_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,60 +17,14 @@ class GoRouterObject {
     initialLocation: PathString.homePage,
     routes: $appRoutes,
   );
-  static final router2 = GoRouter(
-    initialLocation: '/',
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const HomePage(),
-        routes: [
-          GoRoute(
-              path: PathString.settingPage,
-              builder: (context, state) => const SettingsPage()),
-          GoRoute(
-              path: 'doc_upload',
-              builder: (context, state) => const DocUploadPage()),
-          GoRoute(
-            path: 'speech',
-            builder: (context, state) => const SttTtsTabPage(),
-            routes: [
-              GoRoute(
-                  path: 'english_to_arabic',
-                  builder: (context, state) {
-                    Map<String, dynamic> parameters = state.pathParameters;
-                    (String, String) val =
-                        (parameters['appTitle'], parameters['localeID']);
-                    return STTPage(appBarTitle: val.$1, localeId: val.$2);
-                  }),
-              GoRoute(
-                  path: 'arabic_to_english/:appTitle/:localeID',
-                  builder: (context, state) {
-                    Map<String, dynamic> parameters = state.pathParameters;
-                    (String, String) val =
-                        (parameters['appTitle'], parameters['localeID']);
-                    return STTPage(appBarTitle: val.$1, localeId: val.$2);
-                  }),
-            ],
-          ),
-          GoRoute(
-              path: 'face_detection',
-              builder: (context, state) => const CameraImageStreamPage()),
-        ],
-      ),
-    ],
-  );
 }
-
-final router = GoRouter(
-  initialLocation: PathString.homePage,
-  routes: $appRoutes,
-);
 
 @TypedGoRoute<HomeRoute>(path: PathString.homePage, routes: [
   TypedGoRoute<SettingsRoute>(path: PathString.settingPage),
   TypedGoRoute<SpeechRoute>(path: PathString.speechPage, routes: [
     TypedGoRoute<SpeechToTextRoute>(path: PathString.speechToText),
   ]),
+  TypedGoRoute<DocUploadRoute>(path: PathString.uploadDocument),
   TypedGoRoute<FaceDetectionRoute>(path: PathString.faceDetectionPage),
 ])
 class HomeRoute extends GoRouteData {
@@ -108,6 +61,14 @@ class SpeechToTextRoute extends GoRouteData {
         appBarTitle: appTitle,
         localeId: localeID,
       );
+}
+
+class DocUploadRoute extends GoRouteData {
+  const DocUploadRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DocUploadPage();
 }
 
 class FaceDetectionRoute extends GoRouteData {
