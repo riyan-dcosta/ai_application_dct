@@ -3,6 +3,7 @@ import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_
 import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_progress_ bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DocUploadPage extends ConsumerWidget {
   const DocUploadPage({super.key});
@@ -20,7 +21,7 @@ class DocUploadPage extends ConsumerWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Upload Documents"),
+          title: Text(AppLocalizations.of(context)!.uploadDocuments),
           centerTitle: true,
         ),
         body: Padding(
@@ -39,17 +40,17 @@ class DocUploadPage extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     UploadProgressBar(
-                      stepName: 'Passport',
+                      stepName: AppLocalizations.of(context)!.passport,
                       stepNum: 1,
                       listenTo: passportUploadStatusProvider,
                     ),
                     UploadProgressBar(
-                      stepName: 'Id Card',
+                      stepName: AppLocalizations.of(context)!.idCard,
                       stepNum: 2,
                       listenTo: idCardUploadStatusProvider,
                     ),
                     UploadProgressBar(
-                      stepName: 'Pdf',
+                      stepName: AppLocalizations.of(context)!.idCard,
                       stepNum: 3,
                       listenTo: pdfUploadStatusProvider,
                     ),

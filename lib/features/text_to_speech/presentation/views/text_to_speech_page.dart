@@ -1,6 +1,7 @@
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
 import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TextToSpeechPage extends StatefulWidget {
   const TextToSpeechPage({super.key});
@@ -48,7 +49,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
           ),
           SizedBox(height: 20),
           CustomButton(
-            label: "Speak",
+            label: AppLocalizations.of(context)!.speak,
             height: 44,
             padding: EdgeInsets.all(4),
             margin: EdgeInsets.symmetric(vertical: 4),

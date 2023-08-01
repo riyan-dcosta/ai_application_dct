@@ -1,0 +1,20 @@
+{
+  "aiApplication": "AI Application",
+  "speech": "Speech",
+  "ocr": "OCR",
+  "faceDetection": "Face Detection",
+  "settings": "Settings",
+  "language": "Language",
+  "english": "English",
+  "arabic": "Arabic",
+  "passport": "Passport",
+  "idCard": "Id Card",
+  "pdf": "Pdf",
+  "next": "Next",
+  "uploadDocuments": "Upload Documents",
+  "englishToArabic": "English to Arabic",
+  "arabicToEnglish": "Arabic to English",
+  "speak": "Speak",
+  "speechToText": "Speech to Text",
+  "textToSpeech": "Text to Speech"
+}

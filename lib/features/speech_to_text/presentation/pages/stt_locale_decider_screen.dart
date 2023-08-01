@@ -1,9 +1,10 @@
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
-import 'package:ai_application_dct/core/config/routes/go_router_object.dart';
-
+import 'package:ai_application_dct/core/routes/auto_router_object.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+@RoutePage()
 class STTLocaleDeciderPage extends StatelessWidget {
   const STTLocaleDeciderPage({super.key});
 
@@ -14,27 +15,31 @@ class STTLocaleDeciderPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomButton(
-              label: "English to Arabic",
-              height: 44,
-              padding: const EdgeInsets.all(4),
-              margin: const EdgeInsets.symmetric(vertical: 4),
-              width: 200,
-              onPressed: () {
-                const SpeechToTextRoute(
-                        appTitle: "English to Arabic", localeID: "ar_QA")
-                    .go(context);
-              }),
-          const SizedBox(height: 8),
+            label: AppLocalizations.of(context)!.englishToArabic,
+            height: 44,
+            padding: EdgeInsets.all(4),
+            margin: EdgeInsets.symmetric(vertical: 4),
+            width: 200,
+            onPressed: () => context.router.push(
+              STTRoute(
+                appBarTitle: AppLocalizations.of(context)!.englishToArabic,
+                localeId: "ar_QA",
+              ),
+            ),
+          ),
+          SizedBox(height: 8),
           CustomButton(
-              label: "Arabic to English",
-              height: 44,
-              padding: const EdgeInsets.all(4),
-              width: 200,
-              onPressed: () {
-                const SpeechToTextRoute(
-                        appTitle: "Arabic to English", localeID: "en_IN")
-                    .go(context);
-              })
+            label: AppLocalizations.of(context)!.arabicToEnglish,
+            height: 44,
+            padding: EdgeInsets.all(4),
+            width: 200,
+            onPressed: () => context.router.push(
+              STTRoute(
+                appBarTitle: AppLocalizations.of(context)!.arabicToEnglish,
+                localeId: "en_IN",
+              ),
+            ),
+          ),
         ],
       ),
     );
