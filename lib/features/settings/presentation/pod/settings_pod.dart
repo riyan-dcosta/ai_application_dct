@@ -26,6 +26,8 @@ class L10nPod extends _$L10nPod {
 class ThemePod extends _$ThemePod {
   @override
   ThemeData build() {
+    // final pref = await Pref.getInstance();
+    // return pref.isDarkTheme() ? _darkTheme : _lightTheme;
     return _lightTheme;
   }
 
@@ -49,6 +51,7 @@ class ThemePod extends _$ThemePod {
   }
 
   void setTheme({required bool toDark}) {
+    // Pref.getInstance().then((pref) => pref.setDarkTheme(isDark: toDark));
     if (toDark) {
       setDarkTheme();
     } else {
