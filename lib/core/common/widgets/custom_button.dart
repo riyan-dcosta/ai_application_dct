@@ -1,3 +1,4 @@
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/theme/theme.dart';
@@ -9,12 +10,14 @@ class CustomButton extends StatefulWidget {
   final double height;
   final double? width;
   final VoidCallback onPressed;
+  final bool isEnabled;
 
   const CustomButton({
     required this.label,
     required this.onPressed,
     this.padding = const EdgeInsets.all(16),
     this.margin = const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    this.isEnabled = true,
     this.height = 68,
     this.width,
     super.key,
@@ -120,30 +123,37 @@ class _CustomButtonState extends State<CustomButton> {
         height: widget.height,
         transform: isPressed ? Matrix4.translationValues(2, 2, 0) : null,
         decoration: BoxDecoration(
-          color: AppColor.accentColor,
+          color: widget.isEnabled ? AppColor.accentColor : AppColor.grey,
           boxShadow: isPressed
               ? []
               : [
-                  const BoxShadow(
-                    color: Color(0xFF53D46B),
+                  BoxShadow(
+                    color:
+                        widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
                     offset: Offset(4, 4),
-                  )
+                  ),
+                  BoxShadow(
+                    color:
+                        widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
+                    offset: Offset(0, 4),
+                  ),
+                  BoxShadow(
+                    color:
+                        widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
+                    offset: Offset(4, 0),
+                  ),
                 ],
         ),
         child: Center(
           child: Text(
             widget.label,
             style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-                color: Colors.white,
-                shadows: [
-                  Shadow(
-                    color: Colors.black.withOpacity(0.4),
-                    offset: const Offset(2, 1),
-                    blurRadius: 2,
-                  )
-                ]),
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
+              color: widget.isEnabled
+                  ? AppColor.white
+                  : AppColor.scaffoldBackgroundColor,
+            ),
           ),
         ),
       ),

@@ -37,23 +37,11 @@ class _UploadDocPageViewState extends State<UploadDocPageView> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           UploadDocWidget(
-            onTappingNext: () {
-              ref.read(pageViewIndexProvider.notifier).state = 2;
-              _pageController.nextPage(
-                duration: Duration(milliseconds: 500),
-                curve: Curves.ease,
-              );
-            },
+            onTappingNext: () => goToNextPage(ref),
             listenToStatusOf: passportUploadStatusProvider,
           ),
           UploadDocWidget(
-            onTappingNext: () {
-              ref.read(pageViewIndexProvider.notifier).state = 3;
-              _pageController.nextPage(
-                duration: Duration(milliseconds: 500),
-                curve: Curves.ease,
-              );
-            },
+            onTappingNext: () => goToNextPage(ref),
             listenToStatusOf: idCardUploadStatusProvider,
           ),
           UploadDocWidget(
@@ -65,5 +53,17 @@ class _UploadDocPageViewState extends State<UploadDocPageView> {
         ],
       );
     });
+  }
+
+  void goToNextPage(WidgetRef ref) {
+    _pageController
+        .nextPage(
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.ease,
+        )
+        .then(
+          (_) => ref.read(pageViewIndexProvider.notifier).state =
+              _pageController.page!.toInt() + 1,
+        );
   }
 }
