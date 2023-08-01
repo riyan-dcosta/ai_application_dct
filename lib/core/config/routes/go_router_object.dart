@@ -3,6 +3,7 @@ import 'package:ai_application_dct/features/face_detection/presentation/pages/ca
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/home_page.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/stt_tts_tab_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pages/doc_upload_page.dart';
+import 'package:ai_application_dct/features/ocr/presentation/pages/doc_upload_page_v2.dart';
 import 'package:ai_application_dct/features/settings/presentation/pages/settings_page.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class GoRouterObject {
   TypedGoRoute<SpeechRoute>(path: PathString.speechPage, routes: [
     TypedGoRoute<SpeechToTextRoute>(path: PathString.speechToText),
   ]),
-  TypedGoRoute<DocUploadRoute>(path: PathString.uploadDocument),
+  TypedGoRoute<DocUploadRouteV2>(path: PathString.uploadDocument),
   TypedGoRoute<FaceDetectionRoute>(path: PathString.faceDetectionPage),
 ])
 class HomeRoute extends GoRouteData {
@@ -69,6 +70,14 @@ class DocUploadRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const DocUploadPage();
+}
+
+class DocUploadRouteV2 extends GoRouteData {
+  const DocUploadRouteV2();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DocUploadPageV2();
 }
 
 class FaceDetectionRoute extends GoRouteData {

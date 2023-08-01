@@ -1,4 +1,4 @@
-import 'package:ai_application_dct/core/constants/colors.dart';
+import 'package:ai_application_dct/core/config/theme/theme.dart';
 import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_pageview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

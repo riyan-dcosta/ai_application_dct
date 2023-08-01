@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
             CustomButton(
               label: AppLocalizations.of(context)!.ocr,
               onPressed: () {
-                const DocUploadRoute().go(context);
+                const DocUploadRouteV2().go(context);
                 // context.go('/doc_upload');
               },
             ),
