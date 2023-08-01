@@ -1,4 +1,3 @@
-import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/theme/theme.dart';
@@ -130,17 +129,17 @@ class _CustomButtonState extends State<CustomButton> {
                   BoxShadow(
                     color:
                         widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
-                    offset: Offset(4, 4),
+                    offset: const Offset(4, 4),
                   ),
                   BoxShadow(
                     color:
                         widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
-                    offset: Offset(0, 4),
+                    offset: const Offset(0, 4),
                   ),
                   BoxShadow(
                     color:
                         widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
-                    offset: Offset(4, 0),
+                    offset: const Offset(4, 0),
                   ),
                 ],
         ),
