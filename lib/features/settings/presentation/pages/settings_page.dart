@@ -43,12 +43,14 @@ class SettingsPage extends ConsumerWidget {
                 final themeProviderObj = ref.read(themePodProvider.notifier);
                 final isDarkTheme = ref.watch(isDarkThemeSetProvider);
                 return SwitchListTile(
-                    title: Text(
-                        "${isDarkTheme ? 'Disable' : 'Enable'} Dark Theme"),
-                    value: isDarkTheme,
-                    onChanged: (bool value) {
-                      themeProviderObj.setTheme(toDark: value);
-                    });
+                  title:
+                      Text("${isDarkTheme ? 'Disable' : 'Enable'} Dark Theme"),
+                  value: isDarkTheme,
+                  onChanged: null,
+                  // onChanged: (bool value) {
+                  //   themeProviderObj.setTheme(toDark: value);
+                  // },
+                );
               },
             ),
             Row(
