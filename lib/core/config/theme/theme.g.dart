@@ -21,7 +21,7 @@ final isDarkThemeSetProvider = AutoDisposeProvider<bool>.internal(
 );
 
 typedef IsDarkThemeSetRef = AutoDisposeProviderRef<bool>;
-String _$appThemeHash() => r'8e6771aabb4481d00f8ab25226a28937b70b215f';
+String _$appThemeHash() => r'b002f6d8413e9d5a696f8ab85a3ff4b1828301bc';
 
 /// See also [AppTheme].
 @ProviderFor(AppTheme)

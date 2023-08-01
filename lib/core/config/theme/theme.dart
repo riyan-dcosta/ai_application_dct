@@ -10,12 +10,7 @@ class AppTheme extends _$AppTheme {
     return _lightTheme;
   }
 
-  final _darkTheme = ThemeData(
-    brightness: Brightness.dark,
-    primarySwatch: Colors.green,
-    useMaterial3: true,
-
-  );
+  final _darkTheme = AppTheme2.darkTheme;
   final _lightTheme = AppTheme2.lightTheme;
 
   void setDarkTheme() {
@@ -69,23 +64,57 @@ class AppTheme2 {
   AppTheme2._();
 
   static ThemeData lightTheme = ThemeData(
-      primaryColor: AppColor.mercury,
-      useMaterial3: true,
-      scaffoldBackgroundColor: AppColor.white,
-      appBarTheme: const AppBarTheme(
-        foregroundColor: AppColor.mercury,
-        backgroundColor: AppColor.accentColor,
-        titleTextStyle: TextStyle(
-          color: AppColor.mercury,
-          fontWeight: FontWeight.w700,
-          fontSize: 20,
-        ),
+    useMaterial3: true,
+    scaffoldBackgroundColor: AppColor.white,
+    appBarTheme: const AppBarTheme(
+      foregroundColor: AppColor.black,
+      backgroundColor: AppColor.white,
+      titleTextStyle: TextStyle(
+        color: AppColor.black,
+        fontWeight: FontWeight.w700,
+        fontSize: 20,
       ),
-      elevatedButtonTheme: const ElevatedButtonThemeData(
-          style: ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(AppColor.bigStone),
-        elevation: MaterialStatePropertyAll(4),
-        shadowColor: MaterialStatePropertyAll(AppColor.emeraldGreen),
-      )));
-  static ThemeData darkTheme = ThemeData();
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.resolveWith<Color>(
+          (states) {
+            if (states.contains(MaterialState.disabled)) {
+              return AppColor.grey;
+            }
+            return AppColor.black;
+          },
+        ),
+        backgroundColor: const MaterialStatePropertyAll(AppColor.white),
+        elevation: const MaterialStatePropertyAll(4),
+        shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
+      ),
+    ),
+  );
+  static ThemeData darkTheme = ThemeData(
+    useMaterial3: true,
+    scaffoldBackgroundColor: AppColor.black,
+    appBarTheme: const AppBarTheme(
+      foregroundColor: AppColor.white,
+      backgroundColor: AppColor.black,
+      titleTextStyle: TextStyle(
+        color: AppColor.white,
+        fontWeight: FontWeight.w700,
+        fontSize: 20,
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.disabled)) {
+            return AppColor.grey;
+          }
+          return AppColor.white;
+        }),
+        backgroundColor: const MaterialStatePropertyAll(AppColor.black),
+        elevation: const MaterialStatePropertyAll(4),
+        shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
+      ),
+    ),
+  );
 }
