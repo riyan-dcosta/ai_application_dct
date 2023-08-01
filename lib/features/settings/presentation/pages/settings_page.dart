@@ -1,11 +1,9 @@
-import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:ai_application_dct/features/settings/presentation/pod/settings_pod.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ai_application_dct/core/config/theme/theme.dart';
 
-@RoutePage()
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({super.key});
 
@@ -20,6 +18,39 @@ class SettingsPage extends ConsumerWidget {
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
+            /// The below widgets are for testing theming
+            const Text("hello"),
+            const Text(
+              "bodyLarge",
+              style: TextStyle(),
+            ),
+            const Icon(Icons.help),
+            const TextField(),
+            ElevatedButton(
+                onPressed: () {}, child: const Text("elevated button")),
+            const ElevatedButton(
+                onPressed: null,
+                child: Text("elevated  "
+                    "disabled button")),
+            SwitchListTile(
+                title: const Text("test Dark Theme"),
+                value: false,
+                onChanged: (value) {}),
+
+            /// Test widgets are above this comment
+            Consumer(
+              builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                final themeProviderObj = ref.read(appThemeProvider.notifier);
+                final isDarkTheme = ref.watch(isDarkThemeSetProvider);
+                return SwitchListTile(
+                    title: Text(
+                        "${isDarkTheme ? 'Disable' : 'Enable'} Dark Theme"),
+                    value: isDarkTheme,
+                    onChanged: (bool value) {
+                      themeProviderObj.setTheme(toDark: value);
+                    });
+              },
+            ),
             Row(
               children: [
                 Text(

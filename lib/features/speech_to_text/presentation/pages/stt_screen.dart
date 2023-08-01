@@ -1,9 +1,7 @@
 import 'package:ai_application_dct/features/speech_to_text/presentation/pod/stt_pod.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-@RoutePage()
 class STTPage extends ConsumerWidget {
   final String appBarTitle;
   final String localeId;

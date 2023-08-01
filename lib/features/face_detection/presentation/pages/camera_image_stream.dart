@@ -2,12 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:circular_progress_bar_with_lines/circular_progress_bar_with_lines.dart';
 
-@RoutePage()
 class CameraImageStreamPage extends StatefulWidget {
   const CameraImageStreamPage({super.key});
 

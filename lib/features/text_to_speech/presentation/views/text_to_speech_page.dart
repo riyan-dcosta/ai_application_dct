@@ -1,10 +1,8 @@
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
 import 'package:ai_application_dct/core/constants/colors.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-@RoutePage()
 class TextToSpeechPage extends StatefulWidget {
   const TextToSpeechPage({super.key});
 
