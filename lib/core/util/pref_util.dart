@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 class Pref {
   static const _prefBox = 'prefBox';
   static const _localeKey = 'locale';
+  static const _darkThemeKey = 'isDark';
 
   final Box<dynamic> _box;
 
@@ -20,5 +21,12 @@ class Pref {
 
   //Locale
   String getLocaleId() => _getValue(_localeKey, defaultValue: 'en');
+
   Future<void> setLocaleId(String localeId) => _setValue(_localeKey, localeId);
+
+  //Theme
+  bool isDarkTheme() => _getValue(_darkThemeKey, defaultValue: false);
+
+  Future<void> setDarkTheme({required bool isDark}) =>
+      _setValue(_darkThemeKey, isDark);
 }
