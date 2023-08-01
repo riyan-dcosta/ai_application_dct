@@ -40,7 +40,7 @@ class SettingsPage extends ConsumerWidget {
             /// Test widgets are above this comment
             Consumer(
               builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                final themeProviderObj = ref.read(appThemeProvider.notifier);
+                final themeProviderObj = ref.read(themePodProvider.notifier);
                 final isDarkTheme = ref.watch(isDarkThemeSetProvider);
                 return SwitchListTile(
                     title: Text(

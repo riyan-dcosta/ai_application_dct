@@ -1,3 +1,4 @@
+import 'package:ai_application_dct/core/config/theme/theme.dart';
 import 'package:ai_application_dct/core/util/pref_util.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -19,4 +20,45 @@ class L10nPod extends _$L10nPod {
 
     state = AsyncData(Locale(localeId));
   }
+}
+
+@riverpod
+class ThemePod extends _$ThemePod {
+  @override
+  ThemeData build() {
+    return _lightTheme;
+  }
+
+  final _darkTheme = AppTheme.darkTheme;
+  final _lightTheme = AppTheme.lightTheme;
+
+  void setDarkTheme() {
+    state = _darkTheme;
+  }
+
+  void setLightTheme() {
+    state = _lightTheme;
+  }
+
+  ThemeData getLightTheme() {
+    return _lightTheme;
+  }
+
+  ThemeData getDarkTheme() {
+    return _darkTheme;
+  }
+
+  void setTheme({required bool toDark}) {
+    if (toDark) {
+      setDarkTheme();
+    } else {
+      setLightTheme();
+    }
+  }
+}
+
+@riverpod
+bool isDarkThemeSet(IsDarkThemeSetRef ref) {
+  final darkTheme = ref.read(themePodProvider.notifier).getDarkTheme();
+  return darkTheme == ref.watch(themePodProvider);
 }
