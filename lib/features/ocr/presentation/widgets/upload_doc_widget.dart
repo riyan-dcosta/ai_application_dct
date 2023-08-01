@@ -1,12 +1,13 @@
 import 'dart:io';
 
+import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
 import 'package:ai_application_dct/core/constants/colors.dart';
-import 'package:ai_application_dct/features/ocr/presentation/widgets/next_or_continue_btn.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UploadDocWidget extends StatefulWidget {
   final VoidCallback onTappingNext;
@@ -103,16 +104,15 @@ class _UploadDocWidgetState extends State<UploadDocWidget> {
             ),
           ),
         ),
-        Consumer(
-          builder: (context, ref, _) {
-            bool isEnabled = ref.watch(widget.listenToStatusOf);
-            return NextOrContinueBtn(
-              label: "Next",
-              onTap: isEnabled ? widget.onTappingNext : null,
-              isEnabled: isEnabled,
-            );
-          },
-        ),
+        Consumer(builder: (context, ref, _) {
+          bool isEnabled = ref.watch(widget.listenToStatusOf);
+          return CustomButton(
+            label: AppLocalizations.of(context)!.next,
+            margin: EdgeInsets.only(bottom: 4, right: 4),
+            onPressed: isEnabled ? widget.onTappingNext : () {},
+            isEnabled: isEnabled,
+          );
+        }),
       ],
     );
   }

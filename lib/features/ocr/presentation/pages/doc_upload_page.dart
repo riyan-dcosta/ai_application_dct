@@ -5,6 +5,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RoutePage()
 class DocUploadPage extends ConsumerWidget {
@@ -23,7 +24,7 @@ class DocUploadPage extends ConsumerWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Upload Documents"),
+          title: Text(AppLocalizations.of(context)!.uploadDocuments),
           centerTitle: true,
         ),
         body: Padding(
@@ -42,21 +43,18 @@ class DocUploadPage extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     UploadProgressBar(
-                      stepName: 'Passport',
+                      stepName: AppLocalizations.of(context)!.passport,
                       stepNum: 1,
-                      isCurrent: 1 <= ref.watch(pageViewIndexProvider),
                       listenTo: passportUploadStatusProvider,
                     ),
                     UploadProgressBar(
-                      stepName: 'Id Card',
+                      stepName: AppLocalizations.of(context)!.idCard,
                       stepNum: 2,
-                      isCurrent: 2 <= ref.watch(pageViewIndexProvider),
                       listenTo: idCardUploadStatusProvider,
                     ),
                     UploadProgressBar(
-                      stepName: 'Pdf',
+                      stepName: AppLocalizations.of(context)!.idCard,
                       stepNum: 3,
-                      isCurrent: 3 <= ref.watch(pageViewIndexProvider),
                       listenTo: pdfUploadStatusProvider,
                     ),
                   ],

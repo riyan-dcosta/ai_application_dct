@@ -1,49 +1,48 @@
 import 'package:ai_application_dct/core/constants/colors.dart';
+import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_pageview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class UploadProgressBar extends StatelessWidget {
+class UploadProgressBar extends ConsumerWidget {
   final String stepName;
   final int stepNum;
-  final bool isCurrent;
   final StateProvider<bool> listenTo;
 
   const UploadProgressBar({
     super.key,
     required this.stepName,
     required this.stepNum,
-    required this.isCurrent,
     required this.listenTo,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    bool isDone = ref.watch(listenTo);
+    bool isCurrent = stepNum <= ref.watch(pageViewIndexProvider);
+
     return Row(
       children: [
-        Consumer(builder: (context, ref, _) {
-          bool isDone = ref.watch(listenTo);
-          return CircleAvatar(
-            radius: 10,
-            backgroundColor: isDone
-                ? AppColor.emeraldGreen
-                : isCurrent
-                    ? AppColor.accentColor
-                    : AppColor.submarineBlue,
-            child: isDone
-                ? const Icon(
-                    Icons.check,
-                    size: 14,
-                    color: AppColor.accentColor,
-                  )
-                : Text(
-                    "$stepNum",
-                    style: const TextStyle(
-                      color: AppColor.white,
-                      fontSize: 12,
-                    ),
+        CircleAvatar(
+          radius: 10,
+          backgroundColor: isDone
+              ? AppColor.emeraldGreen
+              : isCurrent
+                  ? AppColor.accentColor
+                  : AppColor.submarineBlue,
+          child: isDone
+              ? const Icon(
+                  Icons.check,
+                  size: 14,
+                  color: AppColor.accentColor,
+                )
+              : Text(
+                  "$stepNum",
+                  style: const TextStyle(
+                    color: AppColor.white,
+                    fontSize: 12,
                   ),
-          );
-        }),
+                ),
+        ),
         SizedBox(width: 8),
         Text(
           stepName,

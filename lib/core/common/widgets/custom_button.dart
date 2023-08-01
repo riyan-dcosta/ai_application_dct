@@ -1,3 +1,4 @@
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
@@ -7,10 +8,12 @@ class CustomButton extends StatefulWidget {
   final double? height;
   final double? width;
   final VoidCallback onPressed;
+  final bool isEnabled;
 
   const CustomButton({
     required this.label,
     required this.onPressed,
+    this.isEnabled = true,
     this.padding,
     this.margin,
     this.height,
@@ -51,31 +54,39 @@ class _CustomButtonState extends State<CustomButton> {
         constraints: BoxConstraints(maxWidth: 400),
         width: widget.width,
         height: widget.height ?? 68,
+        transform: isPressed ? Matrix4.translationValues(2, 2, 0) : null,
         decoration: BoxDecoration(
-          color: Color(0xFF0D2231),
+          color: widget.isEnabled ? AppColor.accentColor : AppColor.grey,
           boxShadow: isPressed
               ? []
               : [
                   BoxShadow(
-                    color: Color(0xFF53D46B),
+                    color:
+                        widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
                     offset: Offset(4, 4),
-                  )
+                  ),
+                  BoxShadow(
+                    color:
+                        widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
+                    offset: Offset(0, 4),
+                  ),
+                  BoxShadow(
+                    color:
+                        widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
+                    offset: Offset(4, 0),
+                  ),
                 ],
         ),
         child: Center(
           child: Text(
             widget.label,
             style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-                color: Colors.white,
-                shadows: [
-                  Shadow(
-                    color: Colors.black.withOpacity(0.4),
-                    offset: Offset(2, 1),
-                    blurRadius: 2,
-                  )
-                ]),
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
+              color: widget.isEnabled
+                  ? AppColor.white
+                  : AppColor.scaffoldBackgroundColor,
+            ),
           ),
         ),
       ),
