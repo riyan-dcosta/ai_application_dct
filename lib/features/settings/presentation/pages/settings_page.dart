@@ -18,6 +18,26 @@ class SettingsPage extends ConsumerWidget {
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
+            /// The below widgets are for testing theming
+            const Text("hello"),
+            const Text(
+              "bodyLarge",
+              style: TextStyle(),
+            ),
+            const Icon(Icons.help),
+            const TextField(),
+            ElevatedButton(
+                onPressed: () {}, child: const Text("elevated button")),
+            const ElevatedButton(
+                onPressed: null,
+                child: Text("elevated  "
+                    "disabled button")),
+            SwitchListTile(
+                title: const Text("test Dark Theme"),
+                value: false,
+                onChanged: (value) {}),
+
+            /// Test widgets are above this comment
             Consumer(
               builder: (BuildContext context, WidgetRef ref, Widget? child) {
                 final themeProviderObj = ref.read(appThemeProvider.notifier);
