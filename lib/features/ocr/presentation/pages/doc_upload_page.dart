@@ -50,7 +50,7 @@ class DocUploadPage extends ConsumerWidget {
                       listenTo: idCardUploadStatusProvider,
                     ),
                     UploadProgressBar(
-                      stepName: AppLocalizations.of(context)!.idCard,
+                      stepName: AppLocalizations.of(context)!.pdf,
                       stepNum: 3,
                       listenTo: pdfUploadStatusProvider,
                     ),

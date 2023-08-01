@@ -1,10 +1,8 @@
-import 'package:ai_application_dct/core/routes/auto_router_object.dart';
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:ai_application_dct/core/config/routes/go_router_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-@RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -16,11 +14,10 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () => context.router.push(const SettingsRoute()),
-            icon: Icon(
-              Icons.settings_outlined,
-            ),
-          ),
+              onPressed: () {
+                const SettingsRoute().go(context);
+              },
+              icon: const Icon(Icons.settings))
         ],
       ),
       body: Center(
@@ -30,19 +27,20 @@ class HomePage extends StatelessWidget {
             CustomButton(
               label: AppLocalizations.of(context)!.speech,
               onPressed: () {
-                context.router.push(const SttTtsTabRoute());
+                const SpeechRoute().go(context);
               },
             ),
             CustomButton(
               label: AppLocalizations.of(context)!.ocr,
               onPressed: () {
-                context.router.push(const DocUploadRoute());
+                const DocUploadRoute().go(context);
+                // context.go('/doc_upload');
               },
             ),
             CustomButton(
               label: AppLocalizations.of(context)!.faceDetection,
               onPressed: () {
-                context.router.push(const CameraImageStreamRoute());
+                const FaceDetectionRoute().go(context);
               },
             ),
           ],
