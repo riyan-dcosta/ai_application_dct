@@ -27,7 +27,7 @@ class CustomButton extends StatefulWidget {
 }
 
 class _CustomButtonState extends State<CustomButton> {
-  bool isPressed = false;
+  bool onClickAnimation = false;
 
   // @override
   // Widget build(BuildContext context) {
@@ -99,19 +99,17 @@ class _CustomButtonState extends State<CustomButton> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Future.delayed(const Duration(milliseconds: 500), () {
-          widget.onPressed();
-        });
+        onClickAnimation = true;
 
-        setState(() {
-          isPressed = true;
-        });
-
-        Future.delayed(const Duration(milliseconds: 150), () {
-          setState(() {
-            isPressed = false;
+        Future.delayed(const Duration(milliseconds: 200), () {
+          onClickAnimation = false;
+          setState(() {});
+        }).then((value) {
+          Future.delayed(const Duration(milliseconds: 200), () {
+            widget.onPressed();
           });
         });
+        setState(() {});
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
@@ -120,26 +118,16 @@ class _CustomButtonState extends State<CustomButton> {
         constraints: const BoxConstraints(maxWidth: 400),
         width: widget.width,
         height: widget.height,
-        transform: isPressed ? Matrix4.translationValues(2, 2, 0) : null,
+        transform: onClickAnimation ? Matrix4.translationValues(2, 2, 0) : null,
         decoration: BoxDecoration(
           color: widget.isEnabled ? AppColor.accentColor : AppColor.grey,
-          boxShadow: isPressed
+          boxShadow: onClickAnimation
               ? []
               : [
                   BoxShadow(
                     color:
                         widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
                     offset: const Offset(4, 4),
-                  ),
-                  BoxShadow(
-                    color:
-                        widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
-                    offset: const Offset(0, 4),
-                  ),
-                  BoxShadow(
-                    color:
-                        widget.isEnabled ? AppColor.emeraldGreen : AppColor.mud,
-                    offset: const Offset(4, 0),
                   ),
                 ],
         ),
