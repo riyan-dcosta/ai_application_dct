@@ -1,10 +1,9 @@
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
-import 'package:ai_application_dct/core/routes/auto_router_object.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:ai_application_dct/core/config/routes/go_router_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 
-@RoutePage()
 class STTLocaleDeciderPage extends StatelessWidget {
   const STTLocaleDeciderPage({super.key});
 
@@ -17,28 +16,26 @@ class STTLocaleDeciderPage extends StatelessWidget {
           CustomButton(
             label: AppLocalizations.of(context)!.englishToArabic,
             height: 44,
-            padding: EdgeInsets.all(4),
-            margin: EdgeInsets.symmetric(vertical: 4),
+            padding:const EdgeInsets.all(4),
+            margin:const EdgeInsets.symmetric(vertical: 4),
             width: 200,
-            onPressed: () => context.router.push(
-              STTRoute(
-                appBarTitle: AppLocalizations.of(context)!.englishToArabic,
-                localeId: "ar_QA",
-              ),
-            ),
+            onPressed: () {
+               SpeechToTextRoute(
+                  appTitle: AppLocalizations.of(context)!.englishToArabic, localeID: "ar_QA")
+                  .go(context);
+            },
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           CustomButton(
             label: AppLocalizations.of(context)!.arabicToEnglish,
             height: 44,
-            padding: EdgeInsets.all(4),
+            padding:const EdgeInsets.all(4),
             width: 200,
-            onPressed: () => context.router.push(
-              STTRoute(
-                appBarTitle: AppLocalizations.of(context)!.arabicToEnglish,
-                localeId: "en_IN",
-              ),
-            ),
+            onPressed: () {
+               SpeechToTextRoute(
+                  appTitle:  AppLocalizations.of(context)!.arabicToEnglish, localeID: "en_IN")
+                  .go(context);
+            },
           ),
         ],
       ),
