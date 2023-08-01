@@ -1,4 +1,3 @@
-import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:ai_application_dct/features/settings/presentation/pod/settings_pod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,8 +23,8 @@ class SettingsPage extends ConsumerWidget {
                 final themeProviderObj = ref.read(appThemeProvider.notifier);
                 final isDarkTheme = ref.watch(isDarkThemeSetProvider);
                 return SwitchListTile(
-                    title:
-                    Text("${isDarkTheme ? 'Disable' : 'Enable'} Dark Theme"),
+                    title: Text(
+                        "${isDarkTheme ? 'Disable' : 'Enable'} Dark Theme"),
                     value: isDarkTheme,
                     onChanged: (bool value) {
                       themeProviderObj.setTheme(toDark: value);
