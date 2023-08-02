@@ -54,6 +54,7 @@ class AppColor {
   static const Color mud = Color(0xFFB1B6AE);
   static const Color scaffoldBackgroundColor = Color(0xFFE3EDF5);
   static const Color emeraldGreen = Color(0xFF53D46B);
+  static const Color emeraldGreen2 = Color(0xFF53946B);
   static const sun = Color(0xFFFCA311);
   static const Color accentColor = Color(0xFF0D2231);
   static const bigStone = Color(0xFF14213D);
@@ -65,56 +66,77 @@ class AppTheme2 {
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    scaffoldBackgroundColor: AppColor.white,
-    appBarTheme: const AppBarTheme(
-      foregroundColor: AppColor.black,
-      backgroundColor: AppColor.white,
-      titleTextStyle: TextStyle(
-        color: AppColor.black,
-        fontWeight: FontWeight.w700,
-        fontSize: 20,
-      ),
+    colorScheme: ColorScheme.light(
+        primary: AppColor.emeraldGreen2
     ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.resolveWith<Color>(
-          (states) {
-            if (states.contains(MaterialState.disabled)) {
-              return AppColor.grey;
-            }
-            return AppColor.black;
-          },
-        ),
-        backgroundColor: const MaterialStatePropertyAll(AppColor.white),
-        elevation: const MaterialStatePropertyAll(4),
-        shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
-      ),
-    ),
+    // scaffoldBackgroundColor: AppColor.white,
+    // appBarTheme: const AppBarTheme(
+    //   foregroundColor: AppColor.black,
+    //   backgroundColor: AppColor.white,
+    //   titleTextStyle: TextStyle(
+    //     color: AppColor.black,
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: 20,
+    //   ),
+    // ),
+    // elevatedButtonTheme: ElevatedButtonThemeData(
+    //   style: ButtonStyle(
+    //     foregroundColor: MaterialStateProperty.resolveWith<Color>(
+    //       (states) {
+    //         if (states.contains(MaterialState.disabled)) {
+    //           return AppColor.grey;
+    //         }
+    //         return AppColor.black;
+    //       },
+    //     ),
+    //     backgroundColor: const MaterialStatePropertyAll(AppColor.white),
+    //     elevation: const MaterialStatePropertyAll(4),
+    //     shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
+    //   ),
+    // ),
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    scaffoldBackgroundColor: AppColor.black,
-    appBarTheme: const AppBarTheme(
-      foregroundColor: AppColor.white,
-      backgroundColor: AppColor.black,
-      titleTextStyle: TextStyle(
-        color: AppColor.white,
-        fontWeight: FontWeight.w700,
-        fontSize: 20,
-      ),
+    // scaffoldBackgroundColor: AppColor.black,
+    // appBarTheme: const AppBarTheme(
+    //   foregroundColor: AppColor.white,
+    //   backgroundColor: AppColor.black,
+    //   titleTextStyle: TextStyle(
+    //     color: AppColor.white,
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: 20,
+    //   ),
+    // ),
+    colorScheme: ColorScheme.dark(
+      primary: AppColor.emeraldGreen
     ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
-            return AppColor.grey;
-          }
-          return AppColor.white;
-        }),
-        backgroundColor: const MaterialStatePropertyAll(AppColor.black),
-        elevation: const MaterialStatePropertyAll(4),
-        shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
-      ),
-    ),
+    // elevatedButtonTheme: ElevatedButtonThemeData(
+    //   style: ButtonStyle(
+    //     foregroundColor: MaterialStateProperty.resolveWith((states) {
+    //       if (states.contains(MaterialState.disabled)) {
+    //         return AppColor.grey;
+    //       }
+    //       return AppColor.white;
+    //     }),
+    //     backgroundColor: const MaterialStatePropertyAll(AppColor.black),
+    //     elevation: const MaterialStatePropertyAll(4),
+    //     shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
+    //   ),
+    // ),
+    // textTheme: const TextTheme(
+    //   titleLarge:_whiteFontTextStyle,
+    //   titleMedium: _whiteFontTextStyle,
+    //   titleSmall: _whiteFontTextStyle,
+    //   bodyLarge: _whiteFontTextStyle,
+    //   bodyMedium: _whiteFontTextStyle,
+    //   bodySmall: _whiteFontTextStyle,
+    // ),
+    // iconTheme: const IconThemeData(
+    //   color: AppColor.white,
+    // )
+  );
+
+  static const _whiteFontTextStyle = TextStyle(
+    color: AppColor.white,
   );
 }

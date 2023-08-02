@@ -12,6 +12,7 @@ class PathString {
   static const faceDetectionPage = "face_detection";
   static const ocrPage = "ocr_page";
   static const uploadDocument = "upload_document";
+  static const integrateCameraModule = "integrate_camera_module";
 
   PathString._();
 }
