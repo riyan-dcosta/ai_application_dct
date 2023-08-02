@@ -6,7 +6,7 @@ part of 'settings_pod.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$l10nPodHash() => r'8d5024d5588e3a48485a8ea53529d4ab3b39b468';
+String _$l10nPodHash() => r'99cae60feee867f747e4eb8d88358d94cac76a38';
 
 /// See also [L10nPod].
 @ProviderFor(L10nPod)

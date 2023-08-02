@@ -1,17 +1,20 @@
 import 'package:hive/hive.dart';
 
 class Pref {
+  static late final Pref _instance;
+
   static const _prefBox = 'prefBox';
   static const _localeKey = 'locale';
 
   final Box<dynamic> _box;
-
   Pref._(this._box);
 
-  static Future<Pref> getInstance() async {
+  static Future<void> start() async {
     final box = await Hive.openBox<dynamic>(_prefBox);
-    return Pref._(box);
+    _instance = Pref._(box);
   }
+
+  static Pref get instance => _instance;
 
   T _getValue<T>(dynamic key, {required T defaultValue}) =>
       _box.get(key, defaultValue: defaultValue) as T;

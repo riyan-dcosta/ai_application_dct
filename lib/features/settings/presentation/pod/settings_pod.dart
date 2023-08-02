@@ -8,14 +8,12 @@ part 'settings_pod.g.dart';
 class L10nPod extends _$L10nPod {
   @override
   Future<Locale> build() async {
-    final pref = await Pref.getInstance();
-    final localeId = pref.getLocaleId();
-
+    final localeId = Pref.instance.getLocaleId();
     return Locale(localeId);
   }
 
   Future<void> toggleLocale(String localeId) async {
-    Pref.getInstance().then((pref) => pref.setLocaleId(localeId));
+    Pref.instance.setLocaleId(localeId);
 
     state = AsyncData(Locale(localeId));
   }
