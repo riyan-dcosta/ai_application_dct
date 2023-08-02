@@ -39,8 +39,10 @@ class HomePage extends StatelessWidget {
             ),
             CustomButton(
               label: AppLocalizations.of(context)!.faceDetection,
-              onPressed: () {
-                const FaceDetectionRoute().go(context);
+              onPressed: () async {
+                bool? resp = await const IntegrateCameraModuleRoute()
+                    .push<bool>(context);
+                print("camera closed $resp");
               },
             ),
           ],

@@ -11,6 +11,7 @@ class PathString {
   static const speechToText = "speech_to_text";
   static const faceDetectionPage = "face_detection";
   static const uploadDocument = "upload_documents";
+  static const integrateCameraModule = "integrate_camera_module";
 
   PathString._();
 }

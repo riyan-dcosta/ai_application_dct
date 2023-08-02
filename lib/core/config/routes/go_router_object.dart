@@ -1,7 +1,9 @@
 import 'package:ai_application_dct/core/constants/strings.dart';
 import 'package:ai_application_dct/features/face_detection/presentation/pages/camera_image_stream.dart';
+import 'package:ai_application_dct/features/face_detection/presentation/pages/integrate_camera_module.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/home_page.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/stt_tts_tab_page.dart';
+import 'package:ai_application_dct/features/ocr/presentation/pages/doc_camera_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pages/doc_upload_page.dart';
 import 'package:ai_application_dct/features/settings/presentation/pages/settings_page.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_screen.dart';
@@ -14,18 +16,24 @@ class GoRouterObject {
   GoRouterObject._();
 
   static final router = GoRouter(
-    initialLocation: PathString.homePage,
+    initialLocation: PathString.homePage + PathString.settingPage,
+    // initialLocation: PathString.homePage + PathString.integrateCameraModule,
     routes: $appRoutes,
   );
 }
 
 @TypedGoRoute<HomeRoute>(path: PathString.homePage, routes: [
   TypedGoRoute<SettingsRoute>(path: PathString.settingPage),
-  TypedGoRoute<SpeechRoute>(path: PathString.speechPage, routes: [
-    TypedGoRoute<SpeechToTextRoute>(path: PathString.speechToText),
-  ]),
+  TypedGoRoute<SpeechRoute>(
+    path: PathString.speechPage,
+    routes: [
+      TypedGoRoute<SpeechToTextRoute>(path: PathString.speechToText),
+    ],
+  ),
   TypedGoRoute<DocUploadRoute>(path: PathString.uploadDocument),
   TypedGoRoute<FaceDetectionRoute>(path: PathString.faceDetectionPage),
+  TypedGoRoute<IntegrateCameraModuleRoute>(
+      path: PathString.integrateCameraModule),
 ])
 class HomeRoute extends GoRouteData {
   const HomeRoute();
@@ -77,4 +85,12 @@ class FaceDetectionRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const CameraImageStreamPage();
+}
+
+class IntegrateCameraModuleRoute extends GoRouteData {
+  const IntegrateCameraModuleRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DocCameraPage();
 }

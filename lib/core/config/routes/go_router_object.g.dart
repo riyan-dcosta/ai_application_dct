@@ -36,6 +36,10 @@ RouteBase get $homeRoute => GoRouteData.$route(
           path: 'face_detection',
           factory: $FaceDetectionRouteExtension._fromState,
         ),
+        GoRouteData.$route(
+          path: 'integrate_camera_module',
+          factory: $IntegrateCameraModuleRouteExtension._fromState,
+        ),
       ],
     );
 
@@ -138,6 +142,24 @@ extension $FaceDetectionRouteExtension on FaceDetectionRoute {
 
   String get location => GoRouteData.$location(
         '/face_detection',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $IntegrateCameraModuleRouteExtension on IntegrateCameraModuleRoute {
+  static IntegrateCameraModuleRoute _fromState(GoRouterState state) =>
+      const IntegrateCameraModuleRoute();
+
+  String get location => GoRouteData.$location(
+        '/integrate_camera_module',
       );
 
   void go(BuildContext context) => context.go(location);

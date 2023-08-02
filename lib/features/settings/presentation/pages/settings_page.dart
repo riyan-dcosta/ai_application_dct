@@ -9,6 +9,7 @@ class SettingsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.settings),
@@ -55,11 +56,12 @@ class SettingsPage extends ConsumerWidget {
               children: [
                 Text(
                   AppLocalizations.of(context)!.language,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    color: AppColor.accentColor,
-                  ),
+                  style: textTheme.headlineSmall,
+                  // style: const TextStyle(
+                  //   fontWeight: FontWeight.w500,
+                  //   fontSize: 16,
+                  //   color: AppColor.accentColor,
+                  // ),
                 ),
               ],
             ),
