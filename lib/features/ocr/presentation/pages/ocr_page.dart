@@ -1,13 +1,15 @@
+import 'package:ai_application_dct/core/config/routes/go_router.dart';
 import 'package:ai_application_dct/core/config/theme/theme.dart';
-import 'package:ai_application_dct/features/ocr/presentation/widgets/ocr_doc_type_selector.dart';
-import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_widget_v2.dart';
+import 'package:ai_application_dct/features/ocr/presentation/pod/ocr_pod.dart';
+import 'package:ai_application_dct/features/ocr/presentation/widgets/ocr_doc_type_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DocUploadPageV2 extends StatelessWidget {
-  const DocUploadPageV2({super.key});
+class OcrPage extends ConsumerWidget {
+  const OcrPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Optical character recognition"),
@@ -17,15 +19,15 @@ class DocUploadPageV2 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            OCRDocTypeSelector(
+            OCRDocTypeWidget(
               docType: "Passport",
               iconPath: "assets/images/passport.png",
             ),
-            OCRDocTypeSelector(
+            OCRDocTypeWidget(
               docType: "ID Card",
               iconPath: "assets/images/id-card.png",
             ),
-            OCRDocTypeSelector(
+            OCRDocTypeWidget(
               docType: "PDF",
               iconPath: "assets/images/pdf.png",
             ),
@@ -38,13 +40,7 @@ class DocUploadPageV2 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => UploadDocWidgetV2(),
-                  ),
-                );
-              },
+              onPressed: () => goToUploadPage(context, ref),
               icon: const Icon(
                 Icons.upload_file_outlined,
                 size: 40,
@@ -63,5 +59,17 @@ class DocUploadPageV2 extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void goToUploadPage(BuildContext context, WidgetRef ref) {
+    if (ref.watch(docTypeProvider) != UploadDocType.notSelected) {
+      const UploadDocRoute().go(context);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Select any document type to proceed"),
+        ),
+      );
+    }
   }
 }

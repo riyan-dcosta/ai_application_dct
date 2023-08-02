@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final passportUploadStatusProvider = StateProvider((ref) => false);
@@ -33,3 +35,13 @@ extension ToUploadDocType on String {
 }
 
 final docTypeProvider = StateProvider((ref) => UploadDocType.notSelected);
+
+// Documents
+// Passport
+final passportFrontSideProvider = StateProvider((ref) => Uint8List(0));
+final passportBackSideProvider = StateProvider((ref) => Uint8List(0));
+// Id Card
+final idCardFrontSideProvider = StateProvider((ref) => Uint8List(0));
+final idCardBackSideProvider = StateProvider((ref) => Uint8List(0));
+// Pdf
+final pdfDocProvider = StateProvider((ref) => "");

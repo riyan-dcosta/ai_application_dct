@@ -1,4 +1,4 @@
-import 'package:ai_application_dct/features/ocr/presentation/pod/doc_upload_pod.dart';
+import 'package:ai_application_dct/features/ocr/presentation/pod/ocr_pod.dart';
 import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

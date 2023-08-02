@@ -10,7 +10,8 @@ class PathString {
   static const speechPage = "speech";
   static const speechToText = "speech_to_text";
   static const faceDetectionPage = "face_detection";
-  static const uploadDocument = "upload_documents";
+  static const ocrPage = "ocr_page";
+  static const uploadDocument = "upload_document";
 
   PathString._();
 }

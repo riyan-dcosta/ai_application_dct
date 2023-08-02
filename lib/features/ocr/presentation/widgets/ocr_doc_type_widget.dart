@@ -1,13 +1,13 @@
 import 'package:ai_application_dct/core/config/theme/theme.dart';
-import 'package:ai_application_dct/features/ocr/presentation/pod/doc_upload_pod.dart';
+import 'package:ai_application_dct/features/ocr/presentation/pod/ocr_pod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class OCRDocTypeSelector extends ConsumerWidget {
+class OCRDocTypeWidget extends ConsumerWidget {
   final String docType;
   final String iconPath;
 
-  const OCRDocTypeSelector({
+  const OCRDocTypeWidget({
     super.key,
     required this.docType,
     required this.iconPath,
