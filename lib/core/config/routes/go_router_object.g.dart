@@ -40,6 +40,10 @@ RouteBase get $homeRoute => GoRouteData.$route(
           path: 'integrate_camera_module',
           factory: $IntegrateCameraModuleRouteExtension._fromState,
         ),
+        GoRouteData.$route(
+          path: 'http_page',
+          factory: $HttpAccessRouteExtension._fromState,
+        ),
       ],
     );
 
@@ -160,6 +164,24 @@ extension $IntegrateCameraModuleRouteExtension on IntegrateCameraModuleRoute {
 
   String get location => GoRouteData.$location(
         '/integrate_camera_module',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $HttpAccessRouteExtension on HttpAccessRoute {
+  static HttpAccessRoute _fromState(GoRouterState state) =>
+      const HttpAccessRoute();
+
+  String get location => GoRouteData.$location(
+        '/http_page',
       );
 
   void go(BuildContext context) => context.go(location);

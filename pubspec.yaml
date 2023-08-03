@@ -15,16 +15,6 @@ dependencies:
   # router
   go_router: ^10.0.0
 
-  # Core
-  flutter_riverpod: ^2.3.6
-  riverpod_annotation: ^2.1.1
-  freezed_annotation: ^2.4.1
-  intl: ^0.18.0
-  file_picker: ^5.3.3
-  path_provider: ^2.0.15
-  path: ^1.8.3
-  dartz: ^0.10.1
-
   # Android_Speech
   speech_to_text: ^6.3.0
 
@@ -42,9 +32,30 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
 
+  # api
+  http: ^1.1.0
+
+  # Core
+  flutter_riverpod: ^2.3.6
+  riverpod_annotation: ^2.1.1
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  intl: ^0.18.0
+  file_picker: ^5.3.3
+  path_provider: ^2.0.15
+  path: ^1.8.3
+  dartz: ^0.10.1
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # router
+  go_router_builder: ^2.2.4
+  
+  # Method_Channel
+  pigeon: ^10.0.0
 
   flutter_lints: ^2.0.0
   build_runner: ^2.4.6
@@ -53,12 +64,7 @@ dev_dependencies:
   riverpod_lint: ^1.4.0
   freezed: ^2.4.1
   hive_generator: ^2.0.0
-
-  # router
-  go_router_builder: ^2.2.4
-  
-  # Method_Channel
-  pigeon: ^10.0.0
+  json_serializable: ^6.7.1
 
 flutter:
   generate: true

@@ -1,4 +1,5 @@
 import 'package:ai_application_dct/core/constants/strings.dart';
+import 'package:ai_application_dct/features/crud_http/presentation/pages/http_access.dart';
 import 'package:ai_application_dct/features/face_detection/presentation/pages/camera_image_stream.dart';
 import 'package:ai_application_dct/features/face_detection/presentation/pages/integrate_camera_module.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/home_page.dart';
@@ -16,7 +17,8 @@ class GoRouterObject {
   GoRouterObject._();
 
   static final router = GoRouter(
-    initialLocation: PathString.homePage + PathString.settingPage,
+    initialLocation: PathString.homePage,
+    // initialLocation: PathString.homePage + PathString.httpPage,
     // initialLocation: PathString.homePage + PathString.integrateCameraModule,
     routes: $appRoutes,
   );
@@ -34,6 +36,7 @@ class GoRouterObject {
   TypedGoRoute<FaceDetectionRoute>(path: PathString.faceDetectionPage),
   TypedGoRoute<IntegrateCameraModuleRoute>(
       path: PathString.integrateCameraModule),
+  TypedGoRoute<HttpAccessRoute>(path: PathString.httpPage),
 ])
 class HomeRoute extends GoRouteData {
   const HomeRoute();
@@ -93,4 +96,11 @@ class IntegrateCameraModuleRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const DocCameraPage();
+}
+
+class HttpAccessRoute extends GoRouteData {
+  const HttpAccessRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const HttpAccess();
 }
