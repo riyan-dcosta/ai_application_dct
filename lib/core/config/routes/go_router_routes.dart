@@ -67,3 +67,10 @@ class FaceDetectionRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) =>
       const CameraImageStreamPage();
 }
+
+class HttpAccessRoute extends GoRouteData {
+  const HttpAccessRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const HttpAccess();
+}

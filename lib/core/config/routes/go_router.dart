@@ -1,4 +1,5 @@
 import 'package:ai_application_dct/core/constants/strings.dart';
+import 'package:ai_application_dct/features/crud_http/presentation/pages/http_access.dart';
 import 'package:ai_application_dct/features/face_detection/presentation/pages/camera_image_stream.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/home_page.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/stt_tts_tab_page.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 part 'go_router.g.dart';
+
 part 'go_router_routes.dart';
 
 class GoRouterObject {
@@ -41,6 +43,7 @@ class GoRouterObject {
       ],
     ),
     TypedGoRoute<FaceDetectionRoute>(path: PathString.faceDetectionPage),
+    TypedGoRoute<HttpAccessRoute>(path: PathString.httpPage),
   ],
 )
 class HomeRoute extends GoRouteData {
