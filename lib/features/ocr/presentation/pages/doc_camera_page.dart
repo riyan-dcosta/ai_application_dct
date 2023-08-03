@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:circular_progress_bar_with_lines/circular_progress_bar_with_lines.dart';
 import 'package:go_router/go_router.dart';
 
 class DocCameraPage extends StatefulWidget {
@@ -17,11 +15,11 @@ class DocCameraPage extends StatefulWidget {
 class _DocCameraPageState extends State<DocCameraPage>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   CameraController? cameraController;
-  late CameraDescription selectedCameraDescription;
+  // late CameraDescription selectedCameraDescription;
   bool isBackCamera = true;
   late CameraDescription frontCamera;
   late CameraDescription backCamera;
-  ResolutionPreset resolutionPreset = ResolutionPreset.max;
+  ResolutionPreset resolutionPreset = ResolutionPreset.low;
   ImageProvider? recentImage;
   int delayTime = 5000;
   double progress = 0;
@@ -79,8 +77,10 @@ class _DocCameraPageState extends State<DocCameraPage>
 
   Future<void> reInitializeCamera() async {
     final camera = CameraController(
-        isBackCamera ? backCamera : frontCamera, resolutionPreset,
-        enableAudio: false);
+      isBackCamera ? backCamera : frontCamera,
+      resolutionPreset,
+      enableAudio: false,
+    );
     camera.addListener(() {
       if (mounted) {
         setState(() {});
@@ -148,147 +148,151 @@ class _DocCameraPageState extends State<DocCameraPage>
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  AspectRatio(
-                      aspectRatio: 1 / cameraController!.value.aspectRatio,
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          CameraPreview(cameraController!),
-                          // Container(
-                          //   alignment: Alignment.center,
-                          //   width: 350,
-                          //   height: 350,
-                          //   child: const CircularProgressBarWithLines(
-                          //     percent: 100,
-                          //     linesLength: 25,
-                          //     linesWidth: 4,
-                          //     linesAmount: 60,
-                          //     radius: 140,
-                          //     linesColor: Colors.white,
-                          //   ),
-                          // ),
-                          // Container(
-                          //   alignment: Alignment.center,
-                          //   width: 350,
-                          //   height: 350,
-                          //   child: CircularProgressBarWithLines(
-                          //     percent: progress,
-                          //     linesLength: 25,
-                          //     linesWidth: 4,
-                          //     linesAmount: 60,
-                          //     radius: 140,
-                          //     linesColor: Colors.green,
-                          //   ),
-                          // ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              // padding: const EdgeInsets.all(16),
-                              // margin: const EdgeInsets.all(16),
-                              // height: MediaQuery.of(context).size.width,
-                              // width: MediaQuery.of(context).size.width,
-                              height: 250,
-                              width: 350,
-                              decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.green, width: 4),
-                                  borderRadius: BorderRadius.circular(16.0)
-                                  // color: Colors.red,
-                                  // backgroundBlendMode: BlendMode.dst,
-                                  // borderRadius: BorderRadius.circular(
-                                  //   MediaQuery.of(context).size.width / 2,
-                                  // ),
-                                  ),
-                            ),
-                          ),
-                          ColorFiltered(
-                            colorFilter: ColorFilter.mode(
-                                Colors.black.withOpacity(0.7),
-                                BlendMode.srcOut),
-                            child: Stack(
-                              fit: StackFit.expand,
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(
-                                    color: Colors.black,
-                                    backgroundBlendMode: BlendMode.dstOut,
-                                  ), // This one will handle background + difference out
-                                ),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    // padding: const EdgeInsets.all(16),
-                                    // margin: const EdgeInsets.all(16),
-                                    // height: MediaQuery.of(context).size.width,
-                                    // width: MediaQuery.of(context).size.width,
-                                    height: 250,
-                                    width: 350,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.green, width: 4),
-                                        color: Colors.red,
-                                        borderRadius:
-                                            BorderRadius.circular(16.0)
-                                        // backgroundBlendMode: BlendMode.dst,
-                                        // borderRadius: BorderRadius.circular(
-                                        //   MediaQuery.of(context).size.width / 2,
-                                        // ),
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      )),
                   Expanded(
-                      child: Row(
-                    children: [
-                      Flexible(
+                    child: AspectRatio(
+                        aspectRatio: 1 / cameraController!.value.aspectRatio,
+                        child: Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            CameraPreview(cameraController!),
+                            // Container(
+                            //   alignment: Alignment.center,
+                            //   width: 350,
+                            //   height: 350,
+                            //   child: const CircularProgressBarWithLines(
+                            //     percent: 100,
+                            //     linesLength: 25,
+                            //     linesWidth: 4,
+                            //     linesAmount: 60,
+                            //     radius: 140,
+                            //     linesColor: Colors.white,
+                            //   ),
+                            // ),
+                            // Container(
+                            //   alignment: Alignment.center,
+                            //   width: 350,
+                            //   height: 350,
+                            //   child: CircularProgressBarWithLines(
+                            //     percent: progress,
+                            //     linesLength: 25,
+                            //     linesWidth: 4,
+                            //     linesAmount: 60,
+                            //     radius: 140,
+                            //     linesColor: Colors.green,
+                            //   ),
+                            // ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                // padding: const EdgeInsets.all(16),
+                                // margin: const EdgeInsets.all(16),
+                                // height: MediaQuery.of(context).size.width,
+                                // width: MediaQuery.of(context).size.width,
+                                height: 250,
+                                width: 350,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.green, width: 4),
+                                    borderRadius: BorderRadius.circular(16.0)
+                                    // color: Colors.red,
+                                    // backgroundBlendMode: BlendMode.dst,
+                                    // borderRadius: BorderRadius.circular(
+                                    //   MediaQuery.of(context).size.width / 2,
+                                    // ),
+                                    ),
+                              ),
+                            ),
+                            ColorFiltered(
+                              colorFilter: ColorFilter.mode(
+                                  Colors.black.withOpacity(0.7),
+                                  BlendMode.srcOut),
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  Container(
+                                    decoration: const BoxDecoration(
+                                      color: Colors.black,
+                                      backgroundBlendMode: BlendMode.dstOut,
+                                    ), // This one will handle background + difference out
+                                  ),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      // padding: const EdgeInsets.all(16),
+                                      // margin: const EdgeInsets.all(16),
+                                      // height: MediaQuery.of(context).size.width,
+                                      // width: MediaQuery.of(context).size.width,
+                                      height: 250,
+                                      width: 350,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Colors.green, width: 4),
+                                          color: Colors.red,
+                                          borderRadius:
+                                              BorderRadius.circular(16.0)
+                                          // backgroundBlendMode: BlendMode.dst,
+                                          // borderRadius: BorderRadius.circular(
+                                          //   MediaQuery.of(context).size.width / 2,
+                                          // ),
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        )),
+                  ),
+                  SizedBox(
+                    height: 100,
+                    child: Row(
+                      children: [
+                        Flexible(
+                            fit: FlexFit.tight,
+                            flex: 1,
+                            child: IconButton(
+                              icon: const Icon(Icons.flash_on),
+                              onPressed: () {},
+                            )),
+                        Expanded(
+                            flex: 1,
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: const Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.circle,
+                                    size: 56,
+                                    color: Colors.black,
+                                  ),
+                                  Icon(
+                                    Icons.circle,
+                                    size: 46,
+                                    color: Colors.white,
+                                  )
+                                ],
+                              ),
+                            )),
+                        Flexible(
                           fit: FlexFit.tight,
                           flex: 1,
-                          child: IconButton(
-                            icon: const Icon(Icons.flash_on),
-                            onPressed: () {},
-                          )),
-                      Expanded(
-                          flex: 1,
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: const Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Icon(
-                                  Icons.circle,
-                                  size: 56,
-                                  color: Colors.black,
-                                ),
-                                Icon(
-                                  Icons.circle,
-                                  size: 46,
-                                  color: Colors.white,
-                                )
-                              ],
+                          child: Container(
+                            padding: const EdgeInsets.all(4.0),
+                            alignment: Alignment.center,
+                            child: IconButton(
+                              style: ButtonStyle(
+                                  iconSize: MaterialStateProperty.all(40)),
+                              onPressed: () {
+                                context.pop<bool>(false);
+                              },
+                              icon: const Icon(Icons.close),
                             ),
-                          )),
-                      Flexible(
-                        fit: FlexFit.tight,
-                        flex: 1,
-                        child: Container(
-                          padding: const EdgeInsets.all(4.0),
-                          alignment: Alignment.center,
-                          child: IconButton(
-                            style: ButtonStyle(
-                                iconSize: MaterialStateProperty.all(40)),
-                            onPressed: () {
-                              context.pop<bool>(false);
-                            },
-                            icon: const Icon(Icons.close),
                           ),
                         ),
-                      ),
-                    ],
-                  )),
+                      ],
+                    ),
+                  ),
                 ],
               )
             : const Center(

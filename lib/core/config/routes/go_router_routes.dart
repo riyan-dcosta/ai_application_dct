@@ -52,6 +52,14 @@ class UploadDocRoute extends GoRouteData {
       const UploadDocPage();
 }
 
+class DocCameraRoute extends GoRouteData {
+  const DocCameraRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const DocCameraPage();
+}
+
 class FaceDetectionRoute extends GoRouteData {
   const FaceDetectionRoute();
 
