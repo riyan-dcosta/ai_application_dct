@@ -5,12 +5,14 @@ class StaticStrings {
 }
 
 class PathString {
+  PathString._();
+
   static const homePage = "/";
   static const settingPage = "settings";
   static const speechPage = "speech";
-  static const speechToText = "speech_to_text";
-  static const faceDetectionPage = "face_detection";
-  static const uploadDocument = "upload_documents";
-
-  PathString._();
+  static const speechToText = "speech-to-text";
+  static const faceDetectionPage = "face-detection";
+  static const ocrPage = "ocr-page";
+  static const uploadDocument = "upload-document";
+  static const docCameraPage = "doc-camera-page";
 }

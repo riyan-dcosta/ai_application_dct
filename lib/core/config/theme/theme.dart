@@ -1,120 +1,89 @@
+import 'package:ai_application_dct/core/constants/colors.dart';
+import 'package:ai_application_dct/features/settings/presentation/pod/settings_pod.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-part 'theme.g.dart';
+final appTheme = Provider((ref) => AppTheme(ref));
 
-@riverpod
-class AppTheme extends _$AppTheme {
-  @override
-  ThemeData build() {
-    return _lightTheme;
-  }
+class AppTheme {
+  final ProviderRef ref;
+  AppTheme(this.ref);
 
-  final _darkTheme = AppTheme2.darkTheme;
-  final _lightTheme = AppTheme2.lightTheme;
+  bool get isDarkMode => ref.watch(themeModeProvider);
 
-  void setDarkTheme() {
-    state = _darkTheme;
-  }
+  ThemeData get theme => isDarkMode ? darkTheme : lightTheme;
 
-  void setLightTheme() {
-    state = _lightTheme;
-  }
-
-  ThemeData getLightTheme() {
-    return _lightTheme;
-  }
-
-  ThemeData getDarkTheme() {
-    return _darkTheme;
-  }
-
-  void setTheme({required bool toDark}) {
-    if (toDark) {
-      setDarkTheme();
-    } else {
-      setLightTheme();
-    }
-  }
-}
-
-@riverpod
-bool isDarkThemeSet(IsDarkThemeSetRef ref) {
-  final darkTheme = ref.read(appThemeProvider.notifier).getDarkTheme();
-  return darkTheme == ref.watch(appThemeProvider);
-}
-
-class AppColor {
-  AppColor._();
-
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color mercury = Color(0xFFE5E5E5);
-  static const Color submarineBlue = Color(0xFFB4C2C6);
-  static const Color grey = Color(0xFF8C99A2);
-  static const Color mud = Color(0xFFB1B6AE);
-  static const Color scaffoldBackgroundColor = Color(0xFFE3EDF5);
-  static const Color emeraldGreen = Color(0xFF53D46B);
-  static const sun = Color(0xFFFCA311);
-  static const Color accentColor = Color(0xFF0D2231);
-  static const bigStone = Color(0xFF14213D);
-  static const Color black = Color(0xFF000000);
-}
-
-class AppTheme2 {
-  AppTheme2._();
+  Color get scaffoldBackgroundColor =>
+      isDarkMode ? AppColor.black : AppColor.offWhite;
+  Color get appBarColor => isDarkMode ? AppColor.black : AppColor.offWhite;
+  Color get accentColor => isDarkMode ? AppColor.black : AppColor.deepOceanBlue;
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    scaffoldBackgroundColor: AppColor.white,
-    appBarTheme: const AppBarTheme(
-      foregroundColor: AppColor.black,
-      backgroundColor: AppColor.white,
-      titleTextStyle: TextStyle(
-        color: AppColor.black,
-        fontWeight: FontWeight.w700,
-        fontSize: 20,
-      ),
-    ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.resolveWith<Color>(
-          (states) {
-            if (states.contains(MaterialState.disabled)) {
-              return AppColor.grey;
-            }
-            return AppColor.black;
-          },
-        ),
-        backgroundColor: const MaterialStatePropertyAll(AppColor.white),
-        elevation: const MaterialStatePropertyAll(4),
-        shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
-      ),
-    ),
+    colorScheme: ColorScheme.light(primary: AppColor.emeraldGreen2),
+    // scaffoldBackgroundColor: AppColor.white,
+    // appBarTheme: const AppBarTheme(
+    //   foregroundColor: AppColor.black,
+    //   backgroundColor: AppColor.white,
+    //   titleTextStyle: TextStyle(
+    //     color: AppColor.black,
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: 20,
+    //   ),
+    // ),
+    // elevatedButtonTheme: ElevatedButtonThemeData(
+    //   style: ButtonStyle(
+    //     foregroundColor: MaterialStateProperty.resolveWith<Color>(
+    //       (states) {
+    //         if (states.contains(MaterialState.disabled)) {
+    //           return AppColor.grey;
+    //         }
+    //         return AppColor.black;
+    //       },
+    //     ),
+    //     backgroundColor: const MaterialStatePropertyAll(AppColor.white),
+    //     elevation: const MaterialStatePropertyAll(4),
+    //     shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
+    //   ),
+    // ),
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    scaffoldBackgroundColor: AppColor.black,
-    appBarTheme: const AppBarTheme(
-      foregroundColor: AppColor.white,
-      backgroundColor: AppColor.black,
-      titleTextStyle: TextStyle(
-        color: AppColor.white,
-        fontWeight: FontWeight.w700,
-        fontSize: 20,
-      ),
-    ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.disabled)) {
-            return AppColor.grey;
-          }
-          return AppColor.white;
-        }),
-        backgroundColor: const MaterialStatePropertyAll(AppColor.black),
-        elevation: const MaterialStatePropertyAll(4),
-        shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
-      ),
-    ),
+    // scaffoldBackgroundColor: AppColor.black,
+    // appBarTheme: const AppBarTheme(
+    //   foregroundColor: AppColor.white,
+    //   backgroundColor: AppColor.black,
+    //   titleTextStyle: TextStyle(
+    //     color: AppColor.white,
+    //     fontWeight: FontWeight.w700,
+    //     fontSize: 20,
+    //   ),
+    // ),
+    colorScheme: ColorScheme.dark(primary: AppColor.emeraldGreen),
+    // elevatedButtonTheme: ElevatedButtonThemeData(
+    //   style: ButtonStyle(
+    //     foregroundColor: MaterialStateProperty.resolveWith((states) {
+    //       if (states.contains(MaterialState.disabled)) {
+    //         return AppColor.grey;
+    //       }
+    //       return AppColor.white;
+    //     }),
+    //     backgroundColor: const MaterialStatePropertyAll(AppColor.black),
+    //     elevation: const MaterialStatePropertyAll(4),
+    //     shadowColor: const MaterialStatePropertyAll(AppColor.emeraldGreen),
+    //   ),
+    // ),
+    // textTheme: const TextTheme(
+    //   titleLarge:_whiteFontTextStyle,
+    //   titleMedium: _whiteFontTextStyle,
+    //   titleSmall: _whiteFontTextStyle,
+    //   bodyLarge: _whiteFontTextStyle,
+    //   bodyMedium: _whiteFontTextStyle,
+    //   bodySmall: _whiteFontTextStyle,
+    // ),
+    // iconTheme: const IconThemeData(
+    //   color: AppColor.white,
+    // )
   );
 }

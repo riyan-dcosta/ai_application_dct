@@ -1,6 +1,5 @@
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:flutter/material.dart';
-
-import '../../config/theme/theme.dart';
 
 class CustomButton extends StatefulWidget {
   final String label;
@@ -120,7 +119,7 @@ class _CustomButtonState extends State<CustomButton> {
         height: widget.height,
         transform: onClickAnimation ? Matrix4.translationValues(2, 2, 0) : null,
         decoration: BoxDecoration(
-          color: widget.isEnabled ? AppColor.accentColor : AppColor.grey,
+          color: widget.isEnabled ? AppColor.deepOceanBlue : AppColor.grey,
           boxShadow: onClickAnimation
               ? []
               : [
@@ -137,9 +136,7 @@ class _CustomButtonState extends State<CustomButton> {
             style: TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 20,
-              color: widget.isEnabled
-                  ? AppColor.white
-                  : AppColor.scaffoldBackgroundColor,
+              color: widget.isEnabled ? AppColor.white : AppColor.offWhite,
             ),
           ),
         ),
