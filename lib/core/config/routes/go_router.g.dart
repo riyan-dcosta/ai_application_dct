@@ -46,6 +46,10 @@ RouteBase get $homeRoute => GoRouteData.$route(
           path: 'face-detection',
           factory: $FaceDetectionRouteExtension._fromState,
         ),
+        GoRouteData.$route(
+          path: 'http_page',
+          factory: $HttpAccessRouteExtension._fromState,
+        ),
       ],
     );
 
@@ -183,6 +187,24 @@ extension $FaceDetectionRouteExtension on FaceDetectionRoute {
 
   String get location => GoRouteData.$location(
         '/face-detection',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $HttpAccessRouteExtension on HttpAccessRoute {
+  static HttpAccessRoute _fromState(GoRouterState state) =>
+      const HttpAccessRoute();
+
+  String get location => GoRouteData.$location(
+        '/http_page',
       );
 
   void go(BuildContext context) => context.go(location);
