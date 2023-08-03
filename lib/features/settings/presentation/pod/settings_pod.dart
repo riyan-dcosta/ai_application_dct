@@ -7,14 +7,29 @@ part 'settings_pod.g.dart';
 @riverpod
 class L10nPod extends _$L10nPod {
   @override
-  Future<Locale> build() async {
+  Locale build() {
     final localeId = Pref.instance.getLocaleId();
     return Locale(localeId);
   }
 
-  Future<void> toggleLocale(String localeId) async {
+  void toggleLocale(String localeId) {
     Pref.instance.setLocaleId(localeId);
 
-    state = AsyncData(Locale(localeId));
+    state = Locale(localeId);
+  }
+}
+
+@Riverpod(keepAlive: true)
+class ThemeMode extends _$ThemeMode {
+  @override
+  bool build() {
+    final isDarkTheme = Pref.instance.isDarkTheme();
+    return isDarkTheme;
+  }
+
+  void toggleTheme(bool isDark) {
+    Pref.instance.setThemeMode(isDark);
+
+    state = isDark;
   }
 }

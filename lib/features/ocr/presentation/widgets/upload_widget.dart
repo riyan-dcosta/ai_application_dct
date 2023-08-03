@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:ai_application_dct/core/config/theme/theme.dart';
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pod/ocr_pod.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';

@@ -1,5 +1,5 @@
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
-import 'package:ai_application_dct/core/config/theme/theme.dart';
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -41,7 +41,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: AppColor.accentColor,
+                  color: AppColor.deepOceanBlue,
                   width: 2,
                 ),
               ),

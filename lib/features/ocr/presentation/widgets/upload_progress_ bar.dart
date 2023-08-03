@@ -1,4 +1,4 @@
-import 'package:ai_application_dct/core/config/theme/theme.dart';
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_pageview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,13 +27,13 @@ class UploadProgressBar extends ConsumerWidget {
           backgroundColor: isDone
               ? AppColor.emeraldGreen
               : isCurrent
-                  ? AppColor.accentColor
+                  ? AppColor.deepOceanBlue
                   : AppColor.submarineBlue,
           child: isDone
               ? const Icon(
                   Icons.check,
                   size: 14,
-                  color: AppColor.accentColor,
+                  color: AppColor.deepOceanBlue,
                 )
               : Text(
                   "$stepNum",
@@ -49,7 +49,7 @@ class UploadProgressBar extends ConsumerWidget {
           style: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 16,
-            color: isCurrent ? AppColor.accentColor : AppColor.submarineBlue,
+            color: isCurrent ? AppColor.deepOceanBlue : AppColor.submarineBlue,
           ),
         ),
       ],

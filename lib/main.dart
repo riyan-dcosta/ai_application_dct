@@ -25,10 +25,10 @@ class MainPage extends ConsumerWidget {
       routerConfig: GoRouterObject.router,
       title: StaticStrings.applicationTitle,
       debugShowCheckedModeBanner: false,
-      theme: ref.watch(appThemeProvider),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: ref.watch(l10nPodProvider).value,
+      locale: ref.watch(l10nPodProvider),
+      theme: ref.watch(appTheme).theme,
     );
   }
 }

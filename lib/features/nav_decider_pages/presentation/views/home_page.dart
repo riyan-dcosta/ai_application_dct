@@ -2,12 +2,13 @@ import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
 import 'package:ai_application_dct/core/config/routes/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.aiApplication),
@@ -40,9 +41,9 @@ class HomePage extends StatelessWidget {
             CustomButton(
               label: AppLocalizations.of(context)!.faceDetection,
               onPressed: () async {
-                bool? resp = await const IntegrateCameraModuleRoute()
-                    .push<bool>(context);
-                print("camera closed $resp");
+                // bool? resp = await const IntegrateCameraModuleRoute()
+                //     .push<bool>(context);
+                // print("camera closed $resp");
               },
             ),
           ],

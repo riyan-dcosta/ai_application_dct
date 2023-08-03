@@ -2,6 +2,7 @@ import 'package:ai_application_dct/core/constants/strings.dart';
 import 'package:ai_application_dct/features/face_detection/presentation/pages/camera_image_stream.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/home_page.dart';
 import 'package:ai_application_dct/features/nav_decider_pages/presentation/views/stt_tts_tab_page.dart';
+import 'package:ai_application_dct/features/ocr/presentation/pages/doc_camera_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pages/doc_upload_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pages/ocr_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_page.dart';
@@ -36,6 +37,7 @@ class GoRouterObject {
       path: PathString.ocrPage,
       routes: [
         TypedGoRoute<UploadDocRoute>(path: PathString.uploadDocument),
+        TypedGoRoute<DocCameraRoute>(path: PathString.docCameraPage),
       ],
     ),
     TypedGoRoute<FaceDetectionRoute>(path: PathString.faceDetectionPage),

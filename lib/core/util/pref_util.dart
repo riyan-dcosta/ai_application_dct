@@ -5,11 +5,12 @@ class Pref {
 
   static const _prefBox = 'prefBox';
   static const _localeKey = 'locale';
+  static const _lightThemeKey = 'isLightTheme';
 
   final Box<dynamic> _box;
   Pref._(this._box);
 
-  static Future<void> start() async {
+  static Future<void> init() async {
     final box = await Hive.openBox<dynamic>(_prefBox);
     _instance = Pref._(box);
   }
@@ -21,7 +22,11 @@ class Pref {
 
   Future<void> _setValue<T>(dynamic key, T value) => _box.put(key, value);
 
-  //Locale
+  // Locale
   String getLocaleId() => _getValue(_localeKey, defaultValue: 'en');
   Future<void> setLocaleId(String localeId) => _setValue(_localeKey, localeId);
+
+  // ThemeMode
+  bool isDarkTheme() => _getValue(_lightThemeKey, defaultValue: false);
+  Future<void> setThemeMode(bool isDark) => _setValue(_lightThemeKey, isDark);
 }

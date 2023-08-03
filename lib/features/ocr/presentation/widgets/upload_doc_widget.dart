@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:ai_application_dct/core/common/widgets/custom_button.dart';
-import 'package:ai_application_dct/core/config/theme/theme.dart';
+import 'package:ai_application_dct/core/constants/colors.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';

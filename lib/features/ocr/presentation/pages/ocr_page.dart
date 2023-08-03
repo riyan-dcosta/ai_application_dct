@@ -1,9 +1,9 @@
 import 'package:ai_application_dct/core/config/routes/go_router.dart';
-import 'package:ai_application_dct/core/config/theme/theme.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pod/ocr_pod.dart';
 import 'package:ai_application_dct/features/ocr/presentation/widgets/ocr_doc_type_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ai_application_dct/core/constants/colors.dart';
 
 class OcrPage extends ConsumerWidget {
   const OcrPage({super.key});
@@ -44,15 +44,15 @@ class OcrPage extends ConsumerWidget {
               icon: const Icon(
                 Icons.upload_file_outlined,
                 size: 40,
-                color: AppColor.accentColor,
+                color: AppColor.deepOceanBlue,
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () => goToCameraPage(context, ref),
               icon: const Icon(
                 Icons.camera_alt_outlined,
                 size: 40,
-                color: AppColor.accentColor,
+                color: AppColor.deepOceanBlue,
               ),
             ),
           ],
@@ -65,11 +65,22 @@ class OcrPage extends ConsumerWidget {
     if (ref.watch(docTypeProvider) != UploadDocType.notSelected) {
       const UploadDocRoute().go(context);
     } else {
+      showSnackBar(context);
+    }
+  }
+
+  void goToCameraPage(BuildContext context, WidgetRef ref) {
+    if (ref.watch(docTypeProvider) != UploadDocType.notSelected) {
+      const DocCameraRoute().go(context);
+    } else {
+      showSnackBar(context);
+    }
+  }
+
+  void showSnackBar(BuildContext context) =>
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("Select any document type to proceed"),
         ),
       );
-    }
-  }
 }
