@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'go_router_object.dart';
+part of 'go_router.dart';
 
 // **************************************************************************
 // GoRouterGenerator
@@ -23,26 +23,28 @@ RouteBase get $homeRoute => GoRouteData.$route(
           factory: $SpeechRouteExtension._fromState,
           routes: [
             GoRouteData.$route(
-              path: 'speech_to_text',
+              path: 'speech-to-text',
               factory: $SpeechToTextRouteExtension._fromState,
             ),
           ],
         ),
         GoRouteData.$route(
-          path: 'upload_documents',
-          factory: $DocUploadRouteExtension._fromState,
+          path: 'ocr-page',
+          factory: $OcrRouteExtension._fromState,
+          routes: [
+            GoRouteData.$route(
+              path: 'upload-document',
+              factory: $UploadDocRouteExtension._fromState,
+            ),
+            GoRouteData.$route(
+              path: 'doc-camera-page',
+              factory: $DocCameraRouteExtension._fromState,
+            ),
+          ],
         ),
         GoRouteData.$route(
-          path: 'face_detection',
+          path: 'face-detection',
           factory: $FaceDetectionRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: 'integrate_camera_module',
-          factory: $IntegrateCameraModuleRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: 'http_page',
-          factory: $HttpAccessRouteExtension._fromState,
         ),
       ],
     );
@@ -105,7 +107,7 @@ extension $SpeechToTextRouteExtension on SpeechToTextRoute {
       );
 
   String get location => GoRouteData.$location(
-        '/speech/speech_to_text',
+        '/speech/speech-to-text',
         queryParams: {
           'app-title': appTitle,
           'locale-i-d': localeID,
@@ -122,12 +124,47 @@ extension $SpeechToTextRouteExtension on SpeechToTextRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $DocUploadRouteExtension on DocUploadRoute {
-  static DocUploadRoute _fromState(GoRouterState state) =>
-      const DocUploadRoute();
+extension $OcrRouteExtension on OcrRoute {
+  static OcrRoute _fromState(GoRouterState state) => const OcrRoute();
 
   String get location => GoRouteData.$location(
-        '/upload_documents',
+        '/ocr-page',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $UploadDocRouteExtension on UploadDocRoute {
+  static UploadDocRoute _fromState(GoRouterState state) =>
+      const UploadDocRoute();
+
+  String get location => GoRouteData.$location(
+        '/ocr-page/upload-document',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $DocCameraRouteExtension on DocCameraRoute {
+  static DocCameraRoute _fromState(GoRouterState state) =>
+      const DocCameraRoute();
+
+  String get location => GoRouteData.$location(
+        '/ocr-page/doc-camera-page',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -145,43 +182,7 @@ extension $FaceDetectionRouteExtension on FaceDetectionRoute {
       const FaceDetectionRoute();
 
   String get location => GoRouteData.$location(
-        '/face_detection',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $IntegrateCameraModuleRouteExtension on IntegrateCameraModuleRoute {
-  static IntegrateCameraModuleRoute _fromState(GoRouterState state) =>
-      const IntegrateCameraModuleRoute();
-
-  String get location => GoRouteData.$location(
-        '/integrate_camera_module',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $HttpAccessRouteExtension on HttpAccessRoute {
-  static HttpAccessRoute _fromState(GoRouterState state) =>
-      const HttpAccessRoute();
-
-  String get location => GoRouteData.$location(
-        '/http_page',
+        '/face-detection',
       );
 
   void go(BuildContext context) => context.go(location);

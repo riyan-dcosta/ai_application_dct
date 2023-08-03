@@ -41,7 +41,7 @@ class _TextToSpeechPageState extends State<TextToSpeechPage> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: AppColor.accentColor,
+                  color: AppColor.deepOceanBlue,
                   width: 2,
                 ),
               ),
