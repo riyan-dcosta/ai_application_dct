@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ai_application_dct/core/config/routes/go_router.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pod/ocr_pod.dart';
 import 'package:ai_application_dct/features/ocr/presentation/widgets/ocr_doc_type_widget.dart';
@@ -47,14 +49,15 @@ class OcrPage extends ConsumerWidget {
                 color: AppColor.deepOceanBlue,
               ),
             ),
-            IconButton(
-              onPressed: () => goToCameraPage(context, ref),
-              icon: const Icon(
-                Icons.camera_alt_outlined,
-                size: 40,
-                color: AppColor.deepOceanBlue,
+            if (ref.watch(docTypeProvider) != UploadDocType.pdf)
+              IconButton(
+                onPressed: () => goToCameraPage(context, ref),
+                icon: const Icon(
+                  Icons.camera_alt_outlined,
+                  size: 40,
+                  color: AppColor.deepOceanBlue,
+                ),
               ),
-            ),
           ],
         ),
       ),
@@ -69,9 +72,29 @@ class OcrPage extends ConsumerWidget {
     }
   }
 
-  void goToCameraPage(BuildContext context, WidgetRef ref) {
+  Future<void> goToCameraPage(BuildContext context, WidgetRef ref) async {
     if (ref.watch(docTypeProvider) != UploadDocType.notSelected) {
-      const DocCameraRoute().go(context);
+      bool? isFrontSideCaptured = await DocCameraRoute(
+        isFrontSide: true,
+        docType: ref.watch(docTypeProvider),
+      ).push<bool>(context);
+
+      log(isFrontSideCaptured.toString(), name: "FrontSideCapture");
+
+      if (isFrontSideCaptured ?? false) {
+        await Future.delayed(Duration(milliseconds: 500));
+        bool? isBackSideCaptured = await DocCameraRoute(
+          isFrontSide: false,
+          docType: ref.watch(docTypeProvider),
+        ).push<bool>(context);
+
+        log(isBackSideCaptured.toString(), name: "BackSideCapture");
+
+        if (isBackSideCaptured ?? false) {
+          log("Navigate to next action", name: "CaptureSuccess");
+          // Navigate to next action
+        }
+      }
     } else {
       showSnackBar(context);
     }

@@ -53,11 +53,16 @@ class UploadDocRoute extends GoRouteData {
 }
 
 class DocCameraRoute extends GoRouteData {
-  const DocCameraRoute();
+  final bool isFrontSide;
+  final UploadDocType docType;
+
+  const DocCameraRoute({required this.isFrontSide, required this.docType});
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const DocCameraPage();
+  Widget build(BuildContext context, GoRouterState state) => DocCameraPage(
+        isFrontSide: isFrontSide,
+        docType: docType,
+      );
 }
 
 class FaceDetectionRoute extends GoRouteData {

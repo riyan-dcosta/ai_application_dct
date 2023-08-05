@@ -5,6 +5,7 @@ import 'package:ai_application_dct/features/nav_decider_pages/presentation/views
 import 'package:ai_application_dct/features/ocr/presentation/pages/doc_camera_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pages/doc_upload_page.dart';
 import 'package:ai_application_dct/features/ocr/presentation/pages/ocr_page.dart';
+import 'package:ai_application_dct/features/ocr/presentation/pod/ocr_pod.dart';
 import 'package:ai_application_dct/features/ocr/presentation/widgets/upload_doc_page.dart';
 import 'package:ai_application_dct/features/settings/presentation/pages/settings_page.dart';
 import 'package:ai_application_dct/features/speech_to_text/presentation/pages/stt_screen.dart';
@@ -22,6 +23,7 @@ class GoRouterObject {
     routes: $appRoutes,
   );
 }
+//todo: Deep linking.
 
 @TypedGoRoute<HomeRoute>(
   path: PathString.homePage,

@@ -160,11 +160,19 @@ extension $UploadDocRouteExtension on UploadDocRoute {
 }
 
 extension $DocCameraRouteExtension on DocCameraRoute {
-  static DocCameraRoute _fromState(GoRouterState state) =>
-      const DocCameraRoute();
+  static DocCameraRoute _fromState(GoRouterState state) => DocCameraRoute(
+        isFrontSide:
+            _$boolConverter(state.uri.queryParameters['is-front-side']!),
+        docType: _$UploadDocTypeEnumMap
+            ._$fromName(state.uri.queryParameters['doc-type']!),
+      );
 
   String get location => GoRouteData.$location(
         '/ocr-page/doc-camera-page',
+        queryParams: {
+          'is-front-side': isFrontSide.toString(),
+          'doc-type': _$UploadDocTypeEnumMap[docType],
+        },
       );
 
   void go(BuildContext context) => context.go(location);
@@ -176,6 +184,13 @@ extension $DocCameraRouteExtension on DocCameraRoute {
 
   void replace(BuildContext context) => context.replace(location);
 }
+
+const _$UploadDocTypeEnumMap = {
+  UploadDocType.notSelected: 'not-selected',
+  UploadDocType.passport: 'passport',
+  UploadDocType.idCard: 'id-card',
+  UploadDocType.pdf: 'pdf',
+};
 
 extension $FaceDetectionRouteExtension on FaceDetectionRoute {
   static FaceDetectionRoute _fromState(GoRouterState state) =>
@@ -193,4 +208,20 @@ extension $FaceDetectionRouteExtension on FaceDetectionRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+bool _$boolConverter(String value) {
+  switch (value) {
+    case 'true':
+      return true;
+    case 'false':
+      return false;
+    default:
+      throw UnsupportedError('Cannot convert "$value" into a bool.');
+  }
+}
+
+extension<T extends Enum> on Map<T, String> {
+  T _$fromName(String value) =>
+      entries.singleWhere((element) => element.value == value).key;
 }
