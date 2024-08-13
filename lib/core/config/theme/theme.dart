@@ -1,48 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-part 'theme.g.dart';
-
-@riverpod
-class AppTheme extends _$AppTheme {
-  @override
-  ThemeData build() {
-    return _lightTheme;
-  }
-
-  final _darkTheme = AppTheme2.darkTheme;
-  final _lightTheme = AppTheme2.lightTheme;
-
-  void setDarkTheme() {
-    state = _darkTheme;
-  }
-
-  void setLightTheme() {
-    state = _lightTheme;
-  }
-
-  ThemeData getLightTheme() {
-    return _lightTheme;
-  }
-
-  ThemeData getDarkTheme() {
-    return _darkTheme;
-  }
-
-  void setTheme({required bool toDark}) {
-    if (toDark) {
-      setDarkTheme();
-    } else {
-      setLightTheme();
-    }
-  }
-}
-
-@riverpod
-bool isDarkThemeSet(IsDarkThemeSetRef ref) {
-  final darkTheme = ref.read(appThemeProvider.notifier).getDarkTheme();
-  return darkTheme == ref.watch(appThemeProvider);
-}
 
 class AppColor {
   AppColor._();
@@ -60,8 +16,8 @@ class AppColor {
   static const Color black = Color(0xFF000000);
 }
 
-class AppTheme2 {
-  AppTheme2._();
+class AppTheme {
+  AppTheme._();
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
